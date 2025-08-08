@@ -1,0 +1,53 @@
+text,intent
+"Book an appointment with the doctor",book_appointment
+"I want to see a doctor tomorrow",book_appointment
+"Schedule a meeting with my cardiologist",book_appointment
+"I need a checkup next Monday",book_appointment
+"Can you book a hospital visit for me?",book_appointment
+"I want to consult a doctor this week",book_appointment
+"Set up a meeting with the neurologist",book_appointment
+"Book a health check appointment for Friday",book_appointment
+"Arrange a doctor appointment at 10 am",book_appointment
+"I need to visit my doctor for a routine checkup",book_appointment
+"Schedule a hospital visit for me on Tuesday",book_appointment
+"Book me an appointment for a medical checkup",book_appointment
+"I want to meet my physician tomorrow morning",book_appointment
+"Arrange a visit to the hospital this weekend",book_appointment
+"Can you schedule a checkup with my doctor?",book_appointment
+"I need a doctor’s appointment for next Friday",book_appointment
+"Please book a cardiologist appointment today",book_appointment
+"Help me schedule a doctor visit next week",book_appointment
+"I want to book a checkup for Monday morning",book_appointment
+"Book a medical appointment for me at 5 pm",book_appointment
+"Arrange a consultation with the dermatologist",book_appointment
+"Can you schedule me with a general physician?",book_appointment
+"I want to see my doctor for a routine check",book_appointment
+"Schedule a health consultation for tomorrow",book_appointment
+"Book me for a doctor’s visit at the clinic",book_appointment
+"Set an appointment with my dentist this week",book_appointment
+"I want to arrange a doctor visit on the weekend",book_appointment
+"Can you book me a hospital appointment?",book_appointment
+"I need a follow-up appointment with the doctor",book_appointment
+"Please arrange a clinic visit for me today",book_appointment
+"Schedule a doctor visit on the coming Monday",book_appointment
+"Book an appointment for my annual checkup",book_appointment
+"I want to meet the doctor about my headache",book_appointment
+"Arrange a medical consultation for this evening",book_appointment
+"Please book me a clinic slot tomorrow morning",book_appointment
+"Book an appointment with a pediatrician",book_appointment
+"Can you schedule a visit with the orthopedic doctor?",book_appointment
+"I want to set up a hospital visit next Saturday",book_appointment
+"Book a quick consultation with a doctor now",book_appointment
+"Arrange a hospital appointment for 4 pm",book_appointment
+"I need to book a doctor’s visit for my cough",book_appointment
+"Please schedule a clinic checkup for me today",book_appointment
+"Book me with the doctor for next Thursday",book_appointment
+"Can you help me arrange a doctor consultation?",book_appointment
+"I want a medical check appointment for Wednesday",book_appointment
+"Book a hospital checkup appointment this morning",book_appointment
+"I need to see a doctor urgently today",book_appointment
+"Arrange a quick appointment with the hospital",book_appointment
+"Please schedule me for a doctor consultation soon",book_appointment
+"Book an appointment for my follow-up scan",book_appointment
+"I want to visit the doctor this afternoon",book_appointment
+"Set an appointment for my clinic check today",book_appointment
