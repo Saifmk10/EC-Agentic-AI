@@ -1,53 +1,605 @@
 text,intent
-"Book an appointment with the doctor",book_appointment
-"I want to see a doctor tomorrow",book_appointment
-"Schedule a meeting with my cardiologist",book_appointment
-"I need a checkup next Monday",book_appointment
-"Can you book a hospital visit for me?",book_appointment
-"I want to consult a doctor this week",book_appointment
-"Set up a meeting with the neurologist",book_appointment
-"Book a health check appointment for Friday",book_appointment
-"Arrange a doctor appointment at 10 am",book_appointment
-"I need to visit my doctor for a routine checkup",book_appointment
-"Schedule a hospital visit for me on Tuesday",book_appointment
-"Book me an appointment for a medical checkup",book_appointment
-"I want to meet my physician tomorrow morning",book_appointment
-"Arrange a visit to the hospital this weekend",book_appointment
-"Can you schedule a checkup with my doctor?",book_appointment
-"I need a doctor’s appointment for next Friday",book_appointment
-"Please book a cardiologist appointment today",book_appointment
-"Help me schedule a doctor visit next week",book_appointment
-"I want to book a checkup for Monday morning",book_appointment
-"Book a medical appointment for me at 5 pm",book_appointment
-"Arrange a consultation with the dermatologist",book_appointment
-"Can you schedule me with a general physician?",book_appointment
-"I want to see my doctor for a routine check",book_appointment
-"Schedule a health consultation for tomorrow",book_appointment
-"Book me for a doctor’s visit at the clinic",book_appointment
-"Set an appointment with my dentist this week",book_appointment
-"I want to arrange a doctor visit on the weekend",book_appointment
-"Can you book me a hospital appointment?",book_appointment
-"I need a follow-up appointment with the doctor",book_appointment
-"Please arrange a clinic visit for me today",book_appointment
-"Schedule a doctor visit on the coming Monday",book_appointment
-"Book an appointment for my annual checkup",book_appointment
-"I want to meet the doctor about my headache",book_appointment
-"Arrange a medical consultation for this evening",book_appointment
-"Please book me a clinic slot tomorrow morning",book_appointment
-"Book an appointment with a pediatrician",book_appointment
-"Can you schedule a visit with the orthopedic doctor?",book_appointment
-"I want to set up a hospital visit next Saturday",book_appointment
-"Book a quick consultation with a doctor now",book_appointment
-"Arrange a hospital appointment for 4 pm",book_appointment
-"I need to book a doctor’s visit for my cough",book_appointment
-"Please schedule a clinic checkup for me today",book_appointment
-"Book me with the doctor for next Thursday",book_appointment
-"Can you help me arrange a doctor consultation?",book_appointment
-"I want a medical check appointment for Wednesday",book_appointment
-"Book a hospital checkup appointment this morning",book_appointment
-"I need to see a doctor urgently today",book_appointment
-"Arrange a quick appointment with the hospital",book_appointment
-"Please schedule me for a doctor consultation soon",book_appointment
-"Book an appointment for my follow-up scan",book_appointment
-"I want to visit the doctor this afternoon",book_appointment
-"Set an appointment for my clinic check today",book_appointment
+Book an appointment with the doctor,book_appointment
+I want to see a doctor tomorrow,book_appointment
+Schedule a meeting with my cardiologist,book_appointment
+I need a checkup next Monday,book_appointment
+Can you book a hospital visit for me?,book_appointment
+I want to consult a doctor this week,book_appointment
+Set up a meeting with the neurologist,book_appointment
+Book a health check appointment for Friday,book_appointment
+Arrange a doctor appointment at 10 am,book_appointment
+I need to visit my doctor for a routine checkup,book_appointment
+Schedule a hospital visit for me on Tuesday,book_appointment
+Book me an appointment for a medical checkup,book_appointment
+I want to meet my physician tomorrow morning,book_appointment
+Arrange a visit to the hospital this weekend,book_appointment
+Can you schedule a checkup with my doctor?,book_appointment
+I need a doctor’s appointment for next Friday,book_appointment
+Please book a cardiologist appointment today,book_appointment
+Help me schedule a doctor visit next week,book_appointment
+I want to book a checkup for Monday morning,book_appointment
+Book a medical appointment for me at 5 pm,book_appointment
+Arrange a consultation with the dermatologist,book_appointment
+Can you schedule me with a general physician?,book_appointment
+I want to see my doctor for a routine check,book_appointment
+Schedule a health consultation for tomorrow,book_appointment
+Book me for a doctor’s visit at the clinic,book_appointment
+Set an appointment with my dentist this week,book_appointment
+I want to arrange a doctor visit on the weekend,book_appointment
+Can you book me a hospital appointment?,book_appointment
+I need a follow-up appointment with the doctor,book_appointment
+Please arrange a clinic visit for me today,book_appointment
+Schedule a doctor visit on the coming Monday,book_appointment
+Book an appointment for my annual checkup,book_appointment
+I want to meet the doctor about my headache,book_appointment
+Arrange a medical consultation for this evening,book_appointment
+Please book me a clinic slot tomorrow morning,book_appointment
+Book an appointment with a pediatrician,book_appointment
+Can you schedule a visit with the orthopedic doctor?,book_appointment
+I want to set up a hospital visit next Saturday,book_appointment
+Book a quick consultation with a doctor now,book_appointment
+Arrange a hospital appointment for 4 pm,book_appointment
+I need to book a doctor’s visit for my cough,book_appointment
+Please schedule a clinic checkup for me today,book_appointment
+Book me with the doctor for next Thursday,book_appointment
+Can you help me arrange a doctor consultation?,book_appointment
+I want a medical check appointment for Wednesday,book_appointment
+Book a hospital checkup appointment this morning,book_appointment
+I need to see a doctor urgently today,book_appointment
+Arrange a quick appointment with the hospital,book_appointment
+Please schedule me for a doctor consultation soon,book_appointment
+Book an appointment for my follow-up scan,book_appointment
+I want to visit the doctor this afternoon,book_appointment
+Set an appointment for my clinic check today,book_appointment
+I want to book a doctor's appointment next week,book_appointment
+Schedule a meeting with my dentist,book_appointment
+Please book a cardiology appointment,book_appointment
+Can you set an appointment with my general physician?,book_appointment
+Book me for a health checkup tomorrow,book_appointment
+I need to see a doctor on Friday,book_appointment
+Arrange an appointment with the neurologist,book_appointment
+Set up a clinic visit next Tuesday,book_appointment
+I want to book a follow-up visit,book_appointment
+Schedule a medical checkup for me,book_appointment
+Please arrange a hospital visit on Monday,book_appointment
+Book an urgent appointment with my doctor,book_appointment
+Can you schedule me for a dermatologist consultation?,book_appointment
+I want a pediatric appointment,book_appointment
+Book a routine checkup for next month,book_appointment
+Please book an appointment with the cardiologist,book_appointment
+I want to schedule a doctor visit for next week,book_appointment
+Book a health check for tomorrow morning,book_appointment
+Arrange an urgent doctor consultation,book_appointment
+Schedule a dentist appointment for next Friday,book_appointment
+Please set up a medical checkup this week,book_appointment
+Book me in for a doctor’s appointment next Tuesday,book_appointment
+Can you help me book a hospital visit?,book_appointment
+I want to schedule a checkup with my doctor,book_appointment
+Arrange a medical appointment for next Thursday,book_appointment
+Book an appointment for my annual physical,book_appointment
+Please schedule a visit to the clinic,book_appointment
+I want to book a specialist consultation,book_appointment
+Set up a doctor’s appointment for me this Friday,book_appointment
+Book me an urgent appointment,book_appointment
+Arrange a hospital checkup for next week,book_appointment
+Schedule a doctor consultation for Monday,book_appointment
+Please book a visit to the cardiologist,book_appointment
+I want to set up a routine checkup,book_appointment
+Book a quick appointment with my physician,book_appointment
+Arrange a medical visit this Saturday,book_appointment
+Please schedule a doctor’s checkup tomorrow,book_appointment
+Book me in for a health consultation,book_appointment
+I want to meet my general physician this week,book_appointment
+Arrange a hospital visit for next Tuesday,book_appointment
+Book a doctor’s appointment at 3 pm,book_appointment
+Please schedule a medical consultation,book_appointment
+I want to book a clinic appointment next Wednesday,book_appointment
+Set an appointment with the pediatrician,book_appointment
+Book me for a routine checkup,book_appointment
+Arrange a doctor visit for next Monday,book_appointment
+Please book an urgent hospital visit,book_appointment
+I want to schedule a consultation with my neurologist,book_appointment
+Book a medical checkup appointment,book_appointment
+Cancel my appointment with the doctor,cancel_appointment
+I need to cancel my meeting with the cardiologist,cancel_appointment
+Please cancel my checkup scheduled for Friday,cancel_appointment
+I want to cancel the hospital visit,cancel_appointment
+Can you cancel my doctor appointment tomorrow?,cancel_appointment
+Cancel my dentist appointment for next week,cancel_appointment
+I no longer need to see the neurologist please cancel,cancel_appointment
+Please cancel my scheduled health consultation,cancel_appointment
+I want to cancel my appointment on Monday,cancel_appointment
+Cancel the follow-up visit with my physician,cancel_appointment
+Please cancel the checkup I booked last week,cancel_appointment
+I can't make it to my doctor’s appointment cancel it,cancel_appointment
+Cancel the clinic visit I scheduled,cancel_appointment
+Please cancel the appointment with my dermatologist,cancel_appointment
+Cancel my hospital appointment for tomorrow,cancel_appointment
+Cancel my appointment for next Thursday,cancel_appointment
+I need to cancel my doctor consultation,cancel_appointment
+Cancel the medical checkup I booked,cancel_appointment
+Please cancel my follow-up appointment,cancel_appointment
+Cancel my doctor visit next week,cancel_appointment
+Please help me cancel my appointment,cancel_appointment
+Cancel the hospital visit scheduled for Friday,cancel_appointment
+I want to cancel my clinic checkup,cancel_appointment
+Please cancel the appointment for next Monday,cancel_appointment
+Cancel my dentist appointment tomorrow,cancel_appointment
+Can you cancel my meeting with the doctor?,cancel_appointment
+I need to cancel my health consultation,cancel_appointment
+Please cancel my scheduled doctor visit,cancel_appointment
+I want to cancel my follow-up checkup,cancel_appointment
+Cancel my appointment with the general physician,cancel_appointment
+Cancel my hospital appointment on Tuesday,cancel_appointment
+Cancel the consultation appointment,cancel_appointment
+Please cancel the medical appointment,cancel_appointment
+Cancel my scheduled checkup,cancel_appointment
+Cancel my doctor appointment immediately,cancel_appointment
+Cancel the hospital checkup,cancel_appointment
+Please cancel my doctor consultation,cancel_appointment
+Cancel my appointment with the specialist,cancel_appointment
+I can’t make it to my doctor’s appointment please cancel it,cancel_appointment
+Please cancel the doctor visit I scheduled,cancel_appointment
+Cancel the hospital appointment for next week,cancel_appointment
+I want to cancel my checkup scheduled tomorrow,cancel_appointment
+Please cancel my dentist appointment next Friday,cancel_appointment
+Cancel my appointment with the pediatrician,cancel_appointment
+I need to cancel the medical consultation I booked,cancel_appointment
+Please cancel the follow-up checkup I scheduled,cancel_appointment
+Cancel my appointment with the cardiologist next Monday,cancel_appointment
+Cancel the hospital visit planned for Thursday,cancel_appointment
+Please cancel the urgent doctor appointment I made,cancel_appointment
+Cancel my appointment with the neurologist,cancel_appointment
+I want to cancel my appointment for next week,cancel_appointment
+Please cancel the clinic visit I arranged,cancel_appointment
+Cancel my scheduled hospital appointment,cancel_appointment
+I need to cancel my doctor checkup tomorrow,cancel_appointment
+Please cancel my doctor appointment as soon as possible,cancel_appointment
+Cancel my medical consultation appointment,cancel_appointment
+Cancel my scheduled doctor’s appointment next Friday,cancel_appointment
+I want to cancel the hospital consultation appointment,cancel_appointment
+Please cancel my visit to the clinic,cancel_appointment
+Cancel the doctor’s appointment I scheduled,cancel_appointment
+I need to cancel my routine checkup appointment,cancel_appointment
+Please cancel the doctor consultation planned for tomorrow,cancel_appointment
+Cancel my scheduled pediatric appointment,cancel_appointment
+Cancel my doctor’s appointment next Wednesday,cancel_appointment
+Please cancel the urgent hospital visit I booked,cancel_appointment
+Cancel my appointment with the dermatologist,cancel_appointment
+I want to cancel my checkup for next month,cancel_appointment
+Please cancel my scheduled appointment with the neurologist,cancel_appointment
+Cancel my doctor appointment scheduled for Monday,cancel_appointment
+Please cancel my hospital appointment for next Tuesday,cancel_appointment
+Cancel the consultation I booked with my specialist,cancel_appointment
+I want to cancel the medical checkup I arranged,cancel_appointment
+Please cancel the follow-up visit planned for Thursday,cancel_appointment
+Cancel my appointment with the general physician next Friday,cancel_appointment
+Please cancel the doctor consultation appointment,cancel_appointment
+Cancel my scheduled checkup appointment,cancel_appointment
+I want to cancel my doctor visit on Wednesday,cancel_appointment
+Cancel the hospital visit I booked for Friday,cancel_appointment
+Please cancel my appointment scheduled for next week,cancel_appointment
+Cancel my doctor consultation for tomorrow,cancel_appointment
+Cancel the urgent clinic visit appointment,cancel_appointment
+Please cancel the scheduled hospital checkup,cancel_appointment
+Cancel my doctor appointment scheduled for Thursday,cancel_appointment
+Cancel my appointment with the cardiologist this week,cancel_appointment
+Please cancel my scheduled doctor visit tomorrow,cancel_appointment
+Cancel the checkup I arranged with the doctor,cancel_appointment
+I want to cancel my hospital appointment for next Friday,cancel_appointment
+Please cancel the consultation appointment I booked,cancel_appointment
+Cancel my doctor’s appointment for next Monday,cancel_appointment
+Cancel the doctor’s visit scheduled for Tuesday,cancel_appointment
+Please cancel my scheduled medical consultation,cancel_appointment
+Cancel the hospital appointment planned for Wednesday,cancel_appointment
+Please cancel my urgent doctor appointment,cancel_appointment
+Cancel my scheduled checkup for next Thursday,cancel_appointment
+Cancel my doctor visit appointment,cancel_appointment
+Please cancel my scheduled doctor appointment immediately,cancel_appointment
+Cancel the hospital checkup appointment,cancel_appointment
+Cancel my appointment with the specialist next week,cancel_appointment
+Please cancel the doctor consultation I booked for next Monday,cancel_appointment
+Cancel my appointment for the medical checkup next week,cancel_appointment
+Cancel my hospital appointment planned for Thursday,cancel_appointment
+Hello,greeting
+Hi there,greeting
+Hey,greeting
+Good morning,greeting
+Good afternoon,greeting
+Hey how are you?,greeting
+Hello can you help me?,greeting
+Hi I need some info,greeting
+Hey bot!,greeting
+Greetings,greeting
+Hi good to see you,greeting
+Hello there!,greeting
+Hey what's up?,greeting
+Good evening,greeting
+Hi how can I help you?,greeting
+Hello how are you doing?,greeting
+Hi there nice to meet you,greeting
+Hey how can I assist?,greeting
+Good day,greeting
+Hello nice to see you,greeting
+Hi buddy,greeting
+Hey friend,greeting
+Hello again,greeting
+Good to see you,greeting
+Hey there,greeting
+Hi what's new?,greeting
+Hello any updates?,greeting
+Good morning how are you?,greeting
+Hi there how can I help?,greeting
+Hey ready to chat?,greeting
+Hello hope you’re well,greeting
+Hi nice to meet you,greeting
+Hey what's going on?,greeting
+Good afternoon how’s your day?,greeting
+Hi how are things?,greeting
+Hello what can I do for you?,greeting
+Hey let’s get started,greeting
+Hi there how’s everything?,greeting
+Hello what’s up?,greeting
+Hey good to see you,greeting
+Hi how’s it going?,greeting
+Hello how can I assist you today?,greeting
+Hey how’s your day going?,greeting
+Hi ready to help?,greeting
+Hello happy to assist,greeting
+Hey what do you need?,greeting
+Hi good afternoon,greeting
+Hello anything I can do?,greeting
+Hey nice to chat with you,greeting
+Hi how’s your morning?,greeting
+Hello what’s new today?,greeting
+Hey what can I help with?,greeting
+Hi good evening,greeting
+Hello what’s happening?,greeting
+Hey how can I support you?,greeting
+Hi there ready to help?,greeting
+Hello how’s everything going?,greeting
+Hey what’s the plan?,greeting
+Hi how’s your afternoon?,greeting
+Hello let me know if you need help,greeting
+Hey what’s on your mind?,greeting
+Hi how’s your week?,greeting
+Hello need any assistance?,greeting
+Hey what do you want to do?,greeting
+Hi there how can I be of help?,greeting
+Hello how’s your evening?,greeting
+Hey ready when you are,greeting
+Hi how’s your day been?,greeting
+Hello how can I make your day better?,greeting
+Hey how’s work going?,greeting
+Hi how’s everything with you?,greeting
+Hello what’s your mood today?,greeting
+Hey what’s new with you?,greeting
+Hi there how can I help today?,greeting
+Hello what’s good?,greeting
+Hey how’s life?,greeting
+Hi how are you feeling?,greeting
+Hello what can I do to help?,greeting
+Hey how’s your morning been?,greeting
+Hi what’s your plan today?,greeting
+Hello how’s your schedule?,greeting
+Hey need some help?,greeting
+Hi there what can I do?,greeting
+Hello what’s going on?,greeting
+Hey how can I support today?,greeting
+Hi how’s your day looking?,greeting
+Hello ready to assist,greeting
+Hey how can I serve you?,greeting
+Hi how are things going?,greeting
+Hello what can I assist with?,greeting
+Hey need help with something?,greeting
+Hi how’s your mood?,greeting
+Hello ready to chat?,greeting
+Hey what’s up today?,greeting
+Hi how’s your morning going?,greeting
+Hello what’s happening today?,greeting
+Hey what’s on your agenda?,greeting
+Hi how’s everything?,greeting
+Hello how can I make things easier?,greeting
+Hey what’s new this week?,greeting
+Hi how can I support you?,greeting
+Bye,goodbye
+See you later,goodbye
+Goodbye,goodbye
+Catch you later,goodbye
+Talk to you soon,goodbye
+Have a nice day,goodbye
+Bye bye,goodbye
+See ya,goodbye
+Later!,goodbye
+Take care,goodbye
+Goodbye for now,goodbye
+See you soon,goodbye
+Catch you later alligator,goodbye
+Bye have a good one,goodbye
+Farewell,goodbye
+See you next time,goodbye
+Bye for now,goodbye
+Take care and stay safe,goodbye
+Good night,goodbye
+Talk soon,goodbye
+See you around,goodbye
+Catch you later,goodbye
+Have a great day,goodbye
+Goodbye and take care,goodbye
+Till next time,goodbye
+Stay safe,goodbye
+Bye bye for now,goodbye
+See you,goodbye
+Take it easy,goodbye
+Farewell for now,goodbye
+Peace out,goodbye
+Goodbye my friend,goodbye
+Catch you later dude,goodbye
+See you later buddy,goodbye
+Bye,goodbye
+Hello can you tell me about your services?,info_request
+I need some information about hospital timings,info_request
+Can you give me details on available doctors?,info_request
+Tell me the procedure to book an appointment,info_request
+How can I reschedule my appointment?,info_request
+Do you provide teleconsultation?,info_request
+What are the working hours of the clinic?,info_request
+Can you tell me about COVID-19 guidelines?,info_request
+Is there a pediatric specialist available?,info_request
+How do I cancel an appointment?,info_request
+What insurance plans do you accept?,info_request
+Can I get a prescription refill?,info_request
+Are walk-in patients allowed?,info_request
+What documents do I need to bring for my visit?,info_request
+Can you tell me about your emergency services?,info_request
+How do I access my medical records?,info_request
+Do you have parking facilities?,info_request
+What are the payment options?,info_request
+Is the lab open on weekends?,info_request
+Can you provide a list of accepted insurances?,info_request
+How can I update my personal information?,info_request
+What safety measures are in place?,info_request
+Can I get a second opinion from a specialist?,info_request
+Are there any ongoing health camps?,info_request
+Do you offer vaccination services?,info_request
+How do I get test results?,info_request
+Can I consult a dietitian?,info_request
+Are your doctors board certified?,info_request
+Do you offer mental health services?,info_request
+Is there wheelchair access?,info_request
+What is the process for referral to a specialist?,info_request
+Can I get a health checkup package?,info_request
+Are home visits available?,info_request
+Do you provide physiotherapy?,info_request
+What is the waiting time for appointments?,info_request
+Can I get a copy of my medical bills?,info_request
+Are online payments accepted?,info_request
+Is there a pharmacy on-site?,info_request
+Do you offer dental services?,info_request
+Can I bring a family member to my appointment?,info_request
+How do I prepare for surgery?,info_request
+Are there language interpreters available?,info_request
+What are the clinic’s COVID protocols?,info_request
+Can I request a female doctor?,info_request
+Is there a discount for seniors?,info_request
+What insurance providers are partnered with you?,info_request
+Do you offer allergy testing?,info_request
+How can I schedule a blood test?,info_request
+Are children allowed in the clinic?,info_request
+What are the clinic’s visitation hours?,info_request
+Do you have a nutritionist?,info_request
+How do I get a medical certificate?,info_request
+Are follow-up appointments free?,info_request
+Can I get emergency dental care?,info_request
+Is there an on-call doctor?,info_request
+What vaccines are available?,info_request
+Do you offer telemedicine services?,info_request
+How do I change my appointment time?,info_request
+Are lab tests covered by insurance?,info_request
+Can I schedule a physical therapy session?,info_request
+What is the cancellation policy?,info_request
+How do I contact my doctor?,info_request
+Can I update my insurance information online?,info_request
+Are walk-ins accepted for flu shots?,info_request
+What specialties do your doctors have?,info_request
+Can I get an appointment reminder?,info_request
+Are you open on public holidays?,info_request
+What is the cost of a general checkup?,info_request
+Do you provide urgent care services?,info_request
+Is parking free?,info_request
+How do I request medical records?,info_request
+Are lab results available online?,info_request
+Can I request a same-day appointment?,info_request
+Do you offer prenatal care?,info_request
+Are counseling services available?,info_request
+Is there a patient portal?,info_request
+How do I request prescription refills?,info_request
+Are masks mandatory at the clinic?,info_request
+What safety protocols do you follow?,info_request
+Can I get a referral letter?,info_request
+Do you provide vaccinations for children?,info_request
+Are there special services for seniors?,info_request
+What forms do I need to fill before my visit?,info_request
+Can I pay with credit card?,info_request
+Is there an onsite lab?,info_request
+What is the wait time for emergency services?,info_request
+Can I get teleconsultation for mental health?,info_request
+Are there any health awareness programs?,info_request
+Do you offer chronic disease management?,info_request
+Can I speak to a nurse?,info_request
+Is the clinic wheelchair accessible?,info_request
+How do I request an ambulance?,info_request
+Are nutrition counseling sessions available?,info_request
+What are the visiting hours for inpatients?,info_request
+Can I get a medical referral?,info_request
+Are your doctors available after hours?,info_request
+Is there a COVID testing facility?,info_request
+What specialties does the clinic offer?,info_request
+How do I schedule a vaccination appointment?,info_request
+Are family members allowed during treatment?,info_request
+Can I get a copy of my test results?,info_request
+Are urgent appointments available?,info_request
+What is your patient privacy policy?,info_request
+Can I get help with billing questions?,info_request
+Are there any patient support groups?,info_request
+Do you offer health screenings?,info_request
+Is there an interpreter service available?,info_request
+Can I request a female nurse?,info_request
+Are same-day appointments available?,info_request
+Is there a pharmacy nearby?,info_request
+How do I update my contact details?,info_request
+Can I schedule an appointment online?,info_request
+Are there any discounts available?,info_request
+Is the clinic pet-friendly?,info_request
+Can I get physical therapy at home?,info_request
+Are mental health services covered by insurance?,info_request
+Do you offer specialist consultations?,info_request
+What is your policy on cancellations?,info_request
+Are lab tests performed onsite?,info_request
+Can I get assistance with paperwork?,info_request
+What are your office hours?,info_request
+Are telehealth appointments available?,info_request
+Can I speak to a dietitian?,info_request
+Do you offer pediatric services?,info_request
+Are your doctors accepting new patients?,info_request
+How do I get a referral to a specialist?,info_request
+Are there online resources for patients?,info_request
+Can I schedule a blood test online?,info_request
+Do you provide post-operative care?,info_request
+What insurance plans do you accept?,info_request
+Are there any health classes offered?,info_request
+Can I get urgent care without an appointment?,info_request
+What are the clinic's COVID safety measures?,info_request
+Do you offer teletherapy?,info_request
+How do I book a follow-up appointment?,info_request
+Are there services for chronic pain?,info_request
+Can I reschedule my appointment online?,info_request
+What forms of payment are accepted?,info_request
+Is there a waiting room?,info_request
+Are there specialists in cardiology?,info_request
+Do you offer lab testing?,info_request
+How do I get medical records transferred?,info_request
+Can I book a virtual consultation?,info_request
+Are your services covered by insurance?,info_request
+Can I bring a translator?,info_request
+Are there parking spaces for disabled?,info_request
+Is the clinic wheelchair accessible?,info_request
+Do you provide mental health counseling?,info_request
+Can I get a flu shot without an appointment?,info_request
+Are same-day appointments available?,info_request
+Is there an onsite pharmacy?,info_request
+Can I get a second opinion?,info_request
+How do I cancel an appointment?,info_request
+What is your refund policy?,info_request
+Do you offer nutrition counseling?,info_request
+Can I get a health screening?,info_request
+Are there pediatric specialists?,info_request
+Is there 24-hour emergency care?,info_request
+Do you accept walk-in patients?,info_request
+Can I schedule a checkup online?,info_request
+How long are appointment slots?,info_request
+Are the doctors board-certified?,info_request
+Is telemedicine available?,info_request
+Can I get a medical certificate?,info_request
+Do you offer dental care?,info_request
+How do I access test results?,info_request
+Are there specialists in neurology?,info_request
+Can I get help with insurance claims?,info_request
+Is there a patient portal?,info_request
+Are there language interpretation services?,info_request
+Can I get home healthcare?,info_request
+What are the visitor policies?,info_request
+Do you provide physical therapy?,info_request
+Is there wheelchair access?,info_request
+Can I get a referral to a specialist?,info_request
+Are there pediatric vaccination services?,info_request
+Can I book lab tests?,info_request
+Is there an after-hours doctor?,info_request
+Do you offer chronic disease management?,info_request
+Can I update my personal info online?,info_request
+Are masks required at the clinic?,info_request
+Is the clinic open on weekends?,info_request
+Can I book a teleconsultation?,info_request
+Are there any special programs for seniors?,info_request
+Do you provide allergy testing?,info_request
+Can I bring a family member?,info_request
+What documents do I need for my visit?,info_request
+How do I prepare for surgery?,info_request
+Are follow-up appointments free?,info_request
+Is there an on-call doctor?,info_request
+What are your clinic hours?,info_request
+Can I get a copy of my medical records?,info_request
+Are lab results available online?,info_request
+Can I schedule a physical therapy session?,info_request
+What is the cancellation policy?,info_request
+How do I contact my doctor?,info_request
+Can I update my insurance info online?,info_request
+Are walk-ins accepted?,info_request
+What specialties do your doctors have?,info_request
+Can I get an appointment reminder?,info_request
+Are you open on public holidays?,info_request
+What is the cost of a general checkup?,info_request
+Do you provide urgent care services?,info_request
+Is parking free?,info_request
+How do I request medical records?,info_request
+Are lab results available online?,info_request
+Can I request a same-day appointment?,info_request
+Do you offer prenatal care?,info_request
+Are counseling services available?,info_request
+Is there a patient portal?,info_request
+How do I request prescription refills?,info_request
+Are masks mandatory at the clinic?,info_request
+What safety protocols do you follow?,info_request
+Can I get a referral letter?,info_request
+Do you provide vaccinations for children?,info_request
+Are there special services for seniors?,info_request
+What forms do I need to fill before my visit?,info_request
+Can I pay with credit card?,info_request
+Is there an onsite lab?,info_request
+What is the wait time for emergency services?,info_request
+Can I get teleconsultation for mental health?,info_request
+Are there any health awareness programs?,info_request
+Do you offer chronic disease management?,info_request
+Can I speak to a nurse?,info_request
+Is the clinic wheelchair accessible?,info_request
+How do I request an ambulance?,info_request
+Are nutrition counseling sessions available?,info_request
+What are the visiting hours for inpatients?,info_request
+Can I get a medical referral?,info_request
+Are your doctors available after hours?,info_request
+Is there a COVID testing facility?,info_request
+What specialties does the clinic offer?,info_request
+How do I schedule a vaccination appointment?,info_request
+Are family members allowed during treatment?,info_request
+Can I get a copy of my test results?,info_request
+Are urgent appointments available?,info_request
+What is your patient privacy policy?,info_request
+Can I get help with billing questions?,info_request
+Are there any patient support groups?,info_request
+Do you offer health screenings?,info_request
+Is there an interpreter service available?,info_request
+Can I request a female nurse?,info_request
+Are same-day appointments available?,info_request
+Is there a pharmacy nearby?,info_request
+How do I update my contact details?,info_request
+Can I schedule an appointment online?,info_request
+Are there any discounts available?,info_request
+Is the clinic pet-friendly?,info_request
+Can I get physical therapy at home?,info_request
+Are mental health services covered by insurance?,info_request
+Do you offer specialist consultations?,info_request
+What is your policy on cancellations?,info_request
+Are lab tests performed onsite?,info_request
+Can I get assistance with paperwork?,info_request
+What are your office hours?,info_request
+Are telehealth appointments available?,info_request
+Can I speak to a dietitian?,info_request
+Do you offer pediatric services?,info_request
+Are your doctors accepting new patients?,info_request
+How do I get a referral to a specialist?,info_request
+Are there online resources for patients?,info_request
+Can I schedule a blood test online?,info_request
+Do you provide post-operative care?,info_request
+What insurance plans do you accept?,info_request
+Are there any health classes offered?,info_request
+Can I get urgent care without an appointment?,info_request
