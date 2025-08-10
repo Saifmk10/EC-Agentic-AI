@@ -7,6 +7,7 @@ env/
 # Ignore model checkpoints (any folder or file with 'checkpoint' in its name)
 trainedModel/checkpoint*/
 trainedModel/finalModel
+trainedModel/hf_token.txt
 
 # Ignore Python cache
 __pycache__/
