@@ -8,36 +8,45 @@ import speech_recognition as sr
 class WorkingModel :
 
     def __init__(self):
-        my_model = "D:/PROJECTS/EC_Agentic_AI/EC-Agentic-AI/trainedModel/finalModel"
-        self.tokenizer = DistilBertTokenizerFast.from_pretrained(my_model)
-        self.model = DistilBertForSequenceClassification.from_pretrained(my_model)
-    #     self.recognizer = sr.Recognizers()
+        my_model = "saifmk/EC-AGENT-MODELS"
+        self.tokenizer = DistilBertTokenizerFast.from_pretrained(my_model , token=HF_TOKEN)
+        self.model = DistilBertForSequenceClassification.from_pretrained(my_model , token=HF_TOKEN)
+        
 
-    # def userInputViaVoice(self):
-    #     with sr.Microphone as source : 
-    #         userAudioInput = self.recognizer.listen(source)
+    def userInputViaVoice(self):
+        self.recognizer = sr.Recognizer()
 
-    #     try : 
-    #         print("HELLO , HOW MAY I HELP YOU TODAY ?")
-    #         print("listening...")
-    #         self.userAudioToText = self.recognizer.recognize_google(userAudioInput)
-    #         print("USER SAID : " , self.userAudioToText)
-    #         return self.userAudioToText
-    #     except sr.UnknownValueError:
-    #         print("Couldn’t understand the audio")
-    #     except sr.RequestError as e:
-    #         print(f"API error; {e}")
+        with sr.Microphone() as source : 
+            print("Adjusting for background noise...")
+            print("HELLO, HOW MAY I HELP YOU TODAY?")
+            print("Listening...")
+             #Limit to 5 seconds of speech, wait at most 3 seconds for start
+            userAudioInput = self.recognizer.listen(source , phrase_time_limit=20)
+            
+
+        try : 
+            print("HELLO , HOW MAY I HELP YOU TODAY ?")
+            print("listening...")
+            self.userAudioToText = self.recognizer.recognize_google(userAudioInput)
+            print("USER SAID : " , self.userAudioToText)
+            
+        except sr.UnknownValueError:
+            print("Couldn’t understand the audio")
+        except sr.RequestError as e:
+            print(f"API error; {e}")
+
+            
 
     
-    def gettingUserInput(self):
-        self.userInput = input("Hey what do you want me to do today? : ")
-        print("USER SAID : " , self.userInput)
-        return self.userInput
+    # def gettingUserInput(self):
+    #     self.userInput = input("Hey what do you want me to do today? : ")
+    #     print("USER SAID : " , self.userInput)
+    #     return self.userInput
         
 
     
     def transformToToken(self):
-        self.tokenizerOutput = self.tokenizer(self.userInput , return_tensors = 'pt' , padding= 'max_length' , truncation = True )
+        self.tokenizerOutput = self.tokenizer(self.userAudioToText , return_tensors = 'pt' , padding= 'max_length' , truncation = True )
     
     
     def sequenceClassification(self):
@@ -61,8 +70,11 @@ class WorkingModel :
 
 
 modelOuput = WorkingModel()
-modelOuput.gettingUserInput()
+# modelOuput.gettingUserInput()
+modelOuput.userInputViaVoice()
 modelOuput.transformToToken()
 modelOuput.sequenceClassification()
         
         
+
+        # so https://github.com/Saifmk10/EC-Agentic-AI this is the github repo where i have the trained model , ill have the ui in few days , so im asking if i move this folder into railway where the model and the ui are connected will that work fine for a hackathon submission ?
