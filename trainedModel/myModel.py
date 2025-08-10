@@ -3,6 +3,8 @@ import torch
 import speech_recognition as sr
 
 
+with open("D:/PROJECTS/EC_Agentic_AI/EC-Agentic-AI/trainedModel/hf_token.txt" , "r" , encoding="utf-8") as fileData :
+    HF_TOKEN = fileData.read()
 
 
 class WorkingModel :
