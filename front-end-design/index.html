@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine Dashboard</title>
+    <link rel="stylesheet" href="./output.css">
+</head>
+
+<body class="bg-[#007BFF] min-h-screen flex flex-col items-center p-6">
+
+
+    <div id="top-nav" class="flex gap-4 mt-4">
+        <button id="btn-my-activities" class="bg-[#000] text-white px-6 py-2 rounded-full">MY ACTIVITIES</button>
+        <button id="btn-my-agent" class="bg-gray-300 text-black px-6 py-2 rounded-full">MY AGENT</button>
+    </div>
+
+
+    <div id="main-content" class="grid grid-cols-3 gap-6 mt-10 w-full max-w-6xl">
+
+
+        <div id="upcoming-medication" class="bg-gray-200 rounded-lg p-4">
+            <h2 id="medication-title" class="bg-[#000] text-white px-4 py-1 rounded-lg inline-block">UPCOMING MEDICATION
+            </h2>
+            <div id="medication-list" class="mt-4 space-y-4">
+                <div class="medication-item">
+                    <p class="font-semibold">MEDICINE: <span class="font-normal">Aspirin</span></p>
+                    <p class="flex items-center gap-2 text-gray-700"><span>🕒</span> 7:00 am</p>
+                </div>
+                <div class="medication-item">
+                    <p class="font-semibold">MEDICINE: <span class="font-normal">Dolo</span></p>
+                    <p class="flex items-center gap-2 text-gray-700"><span>🕒</span> 2:30 pm</p>
+                </div>
+                <div class="medication-item">
+                    <p class="font-semibold">MEDICINE: <span class="font-normal">Atortib</span></p>
+                    <p class="flex items-center gap-2 text-gray-700"><span>🕒</span> 7:00 pm</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="medicine-stock" class="bg-gray-200 rounded-lg p-4">
+            <div class="flex justify-between items-center">
+                <h2 id="stock-title" class="bg-[#000] text-white px-4 py-1 rounded-lg">MEDICINES STOCK</h2>
+            </div>
+            <div id="stock-list" class="mt-4 space-y-4">
+                <div class="stock-item">
+                    <p class="text-white bg-[#000] rounded px-3 py-1 inline-block">Acetaminophen</p>
+                    <p class="text-sm mt-1">23/50</p>
+                    <div class="w-full bg-gray-800 rounded-full h-2">
+                        <div class="bg-green-500 h-2 rounded-full" style="width:46%"></div>
+                    </div>
+                </div>
+                <div class="stock-item">
+                    <p class="text-white bg-[#000] rounded px-3 py-1 inline-block">Atortib</p>
+                    <p class="text-sm mt-1">23/50</p>
+                    <div class="w-full bg-gray-800 rounded-full h-2">
+                        <div class="bg-green-500 h-2 rounded-full" style="width:46%"></div>
+                    </div>
+                </div>
+                <div class="stock-item">
+                    <p class="text-white bg-[#000] rounded px-3 py-1 inline-block">Aspirin</p>
+                    <p class="text-sm mt-1">23/50</p>
+                    <div class="w-full bg-gray-800 rounded-full h-2">
+                        <div class="bg-green-500 h-2 rounded-full" style="width:46%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="appointments" class="bg-gray-200 rounded-lg p-4">
+            <h2 id="appointments-title" class="bg-[#000] text-white px-4 py-1 rounded-lg inline-block">APPOINTMENTS</h2>
+            <div id="appointments-list" class="mt-4 space-y-4">
+                <div
+                    class="appointment-item bg-gradient-to-r from-white to-blue-100 p-3 rounded-xl border border-[#000]">
+                    <p class="font-semibold">APPOINTMENT WITH DR MARCUS</p>
+                    <p class="flex items-center gap-2 text-gray-700"><span>🕒</span> 3:00 PM – 4:30 PM</p>
+                    <p class="text-gray-500">27 – Aug – 2025</p>
+                </div>
+                <div
+                    class="appointment-item bg-gradient-to-r from-white to-blue-100 p-3 rounded-xl border border-[#000]">
+                    <p class="font-semibold">APPOINTMENT WITH DR ROBERT</p>
+                    <p class="flex items-center gap-2 text-gray-700"><span>🕒</span> 6:00 PM – 8:30 PM</p>
+                    <p class="text-gray-500">30 – Aug – 2025</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</body>
+
+</html>
