@@ -1,6 +1,7 @@
 from transformers import DistilBertTokenizerFast , DistilBertForSequenceClassification
 import torch
 import speech_recognition as sr
+from dataParser import DataParsing
 
 
 with open("D:/PROJECTS/EC_Agentic_AI/EC-Agentic-AI/trainedModel/hf_token.txt" , "r" , encoding="utf-8") as fileData :
@@ -22,8 +23,8 @@ class WorkingModel :
             print("Adjusting for background noise...")
             print("HELLO, HOW MAY I HELP YOU TODAY?")
             print("Listening...")
-             #Limit to 5 seconds of speech, wait at most 3 seconds for start
-            userAudioInput = self.recognizer.listen(source , phrase_time_limit=20)
+            userAudioInput = self.recognizer.listen(source , phrase_time_limit=40)
+            
             
 
         try : 
@@ -31,19 +32,12 @@ class WorkingModel :
             print("listening...")
             self.userAudioToText = self.recognizer.recognize_google(userAudioInput)
             print("USER SAID : " , self.userAudioToText)
+            return self.userAudioToText
             
         except sr.UnknownValueError:
             print("Couldn’t understand the audio")
         except sr.RequestError as e:
             print(f"API error; {e}")
-
-            
-
-    
-    # def gettingUserInput(self):
-    #     self.userInput = input("Hey what do you want me to do today? : ")
-    #     print("USER SAID : " , self.userInput)
-    #     return self.userInput
         
 
     
@@ -56,7 +50,8 @@ class WorkingModel :
             inputs = self.tokenizerOutput
             output = self.model(**inputs)
             prediction = torch.argmax(output.logits , dim = -1)
-            print("FINAL OUTPUT : " , prediction)
+            print("FINAL OUTPUT : " , prediction.item())
+
             if prediction.item() == 0 :
                 print("Appointment booked")
             elif prediction.item() == 1:
@@ -68,7 +63,19 @@ class WorkingModel :
             else :
                 print("I dont understand")
 
-                # 0=>book_appointment 1=>cancel_appointment 2=>bye 3=>hi
+            print("PREDICTION :" ,prediction)
+            # return prediction
+            # 0=>book_appointment 1=>cancel_appointment 2=>bye 3=>hi
+
+    # this function is using the DataParsing class that has been imported from the dataParser.py file   
+    def parsedUserInput (self):
+        output = DataParsing.entityExtraction(self.userAudioToText)
+        print("doctor name :" , output[0])
+        print("doctor appointment time :" , output[1])
+        print("doctor appointment date :" , output[2])
+
+
+
 
 
 modelOuput = WorkingModel()
@@ -76,7 +83,8 @@ modelOuput = WorkingModel()
 modelOuput.userInputViaVoice()
 modelOuput.transformToToken()
 modelOuput.sequenceClassification()
+modelOuput.parsedUserInput()
         
         
 
-        # so https://github.com/Saifmk10/EC-Agentic-AI this is the github repo where i have the trained model , ill have the ui in few days , so im asking if i move this folder into railway where the model and the ui are connected will that work fine for a hackathon submission ?
+# so https://github.com/Saifmk10/EC-Agentic-AI this is the github repo where i have the trained model , ill have the ui in few days , so im asking if i move this folder into railway where the model and the ui are connected will that work fine for a hackathon submission ?
