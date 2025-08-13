@@ -1,17 +1,23 @@
-from fastapi import FastAPI, HTTPException # type: ignore
-from pydantic import BaseModel # type: ignore
+from fastapi import FastAPI, HTTPException  # type: ignore
+from pydantic import BaseModel  # type: ignore
 from myModel import WorkingModel
 
 # Initialize FastAPI app
 app = FastAPI()
 
-# Create one model instance for reuse
-model_instance = WorkingModel()
+# Model instance (will be loaded on startup)
+model_instance = None
+
+# FastAPI startup event to load model
+@app.on_event("startup")
+def load_model():
+    global model_instance
+    model_instance = WorkingModel()
 
 # Request body schema
 class UserText(BaseModel):
     text: str
-    
+
 @app.post("/predict")
 def predict_text(input: UserText):
     try:
