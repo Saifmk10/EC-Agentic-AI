@@ -1,20 +1,23 @@
-from fastapi import FastAPI, HTTPException  # type: ignore
-from pydantic import BaseModel  # type: ignore
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
 from myModel import WorkingModel
+import spacy
+import subprocess
 
-# Initialize FastAPI app
 app = FastAPI()
 
-# Model instance (will be loaded on startup)
-model_instance = None
-
-# FastAPI startup event to load model
+# Load SpaCy model at startup
 @app.on_event("startup")
-def load_model():
-    global model_instance
-    model_instance = WorkingModel()
+def load_models():
+    global nlp, model_instance
+    try:
+        nlp = spacy.load("en_core_web_sm")
+    except:
+        subprocess.run(["python", "-m", "spacy", "download", "en_core_web_sm"])
+        nlp = spacy.load("en_core_web_sm")
 
-# Request body schema
+    model_instance = WorkingModel()  # Load Hugging Face model at runtime
+
 class UserText(BaseModel):
     text: str
 
@@ -23,22 +26,11 @@ def predict_text(input: UserText):
     try:
         userinput = input.text
         model_instance.transformToToken(userinput)
-        
-        # Run classification
         with_output = model_instance.sequenceClassification()
-        
-        # Parse entities
         parsed_entities = model_instance.parsedUserInput()
 
-        # Map classification to label for clarity
-        classification_map = {
-            0: "book_appointment",
-            1: "cancel_appointment",
-            2: "bye",
-            3: "hi",
-            -1: "unknown"
-        }
-        classification_label = classification_map.get(with_output, "unknown")
+        classification_map = {0:"book_appointment",1:"cancel_appointment",2:"bye",3:"hi",-1:"unknown"}
+        classification_label = classification_map.get(with_output,"unknown")
 
         return {
             "classification": classification_label,
