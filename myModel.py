@@ -1,6 +1,6 @@
 from transformers import DistilBertTokenizerFast , DistilBertForSequenceClassification
 import torch
-import speech_recognition as sr
+# import speech_recognition as sr
 from dataParser import DataParsing
 import os
 

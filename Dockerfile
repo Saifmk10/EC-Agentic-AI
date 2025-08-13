@@ -21,5 +21,5 @@ COPY --from=builder /usr/local/bin /usr/local/bin
 COPY . .
 
 # Run FastAPI
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
+CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port $PORT"]
 
