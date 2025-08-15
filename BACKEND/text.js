@@ -7,7 +7,7 @@ async function callApi() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        text: 'Book an appointment for 19th october with Robert at 4pm'
+        text: 'cancel the appointment with Robert at 9am tomorrow'
       })
     });
 
