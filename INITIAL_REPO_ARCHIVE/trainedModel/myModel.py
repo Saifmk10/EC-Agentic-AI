@@ -1,17 +1,12 @@
 from transformers import DistilBertTokenizerFast , DistilBertForSequenceClassification
 import torch
-# import speech_recognition as sr
+import speech_recognition as sr
 from dataParser import DataParsing
-import os
-
-#for local terminal run and text use bellow code
-
-# with open("./hf_token.txt" , "r" , encoding="utf-8") as fileData :
-#     HF_TOKEN = fileData.read()
 
 
-#for docker image 
-HF_TOKEN = os.environ.get("HF_TOKEN")
+with open("D:/PROJECTS/EC_Agentic_AI/EC-Agentic-AI/trainedModel/hf_token.txt" , "r" , encoding="utf-8") as fileData :
+    HF_TOKEN = fileData.read()
+
 
 class WorkingModel :
 
@@ -91,6 +86,3 @@ class WorkingModel :
 # modelOuput.sequenceClassification()
 # modelOuput.parsedUserInput()
         
-        
-
-# so https://github.com/Saifmk10/EC-Agentic-AI this is the github repo where i have the trained model , ill have the ui in few days , so im asking if i move this folder into railway where the model and the ui are connected will that work fine for a hackathon submission ?
