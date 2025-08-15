@@ -22,4 +22,4 @@ __pycache__/
 *.h5
 
 #ignoring node modules for tailwind
-node_modules
+node_modules*/
