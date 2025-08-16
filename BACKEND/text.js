@@ -1,4 +1,4 @@
-const API_URL = 'https://ec-agentic-ai-backend-2onhyjxxx-saifmks-projects.vercel.app/api/runModel';
+const API_URL = 'https://ec-agentic-ai-backend-ane4pox4s-saifmks-projects.vercel.app/api/runModel';
 
 
 async function callApi() {
@@ -7,7 +7,7 @@ async function callApi() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        text: 'cancel the appointment with Robert at 9am tomorrow'
+        text: 'cancel the appointment with Robert at 9am tomorrow at cmh'
       })
     });
 
