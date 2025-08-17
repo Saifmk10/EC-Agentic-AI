@@ -16,7 +16,6 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 const db = getFirestore(app);
 
 
@@ -26,6 +25,7 @@ const appointmentsList = document.getElementById("appointments-list");
 const cardTemplate = document.getElementById("appointment_card");
 const noAppointments = document.getElementById("no_appointments")
 
+// function that is required for fetching the data from the db to the front end
 async function fetchingAppointmentDetails() {
 
     //fetching the data from the firebase db 
@@ -38,7 +38,6 @@ async function fetchingAppointmentDetails() {
 
 
     //printing the fetched data for element 0 of the json for debug purpose 
-
     console.log(appointmentDetails[0].doctorName);
     console.log(appointmentDetails[0].appointmentDate);
     console.log(appointmentDetails[0].appointmentTime);
