@@ -1,7 +1,6 @@
 // Firebase imports
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-analytics.js";
-import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc , getDocs} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 // Firebase config has been added here in the same line to prevent crashes 
 const firebaseConfig = {
@@ -16,7 +15,6 @@ const firebaseConfig = {
 
 // Init for Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 const db = getFirestore(app);
 
 
@@ -31,6 +29,36 @@ let transcript = "";
 let DOC_NAME = "";
 let APPOINTMENT_TIME = "";
 let APPOINTMENT_DATE = "";
+let INTETNT = "";
+
+
+// text to voice module function 
+function textToSpeechModule(text) {
+
+  try {
+
+    const utterance = new SpeechSynthesisUtterance(text)
+    utterance.rate = 0.7;
+    utterance.pitch = 2;
+    utterance.lang = 'en-US';
+
+    utterance.onstart = () => console.log("Speech started...");
+    utterance.onend = () => console.log("Speech finished.");
+    utterance.onerror = (e) => console.error("Speech error:", e.error);
+
+
+    window.speechSynthesis.speak(utterance)
+
+  }
+  catch (err) {
+    console.error("Text to speech Error:", err.message);
+  }
+
+}
+
+
+
+
 
 // speech -> text logic
 window.gettingVoice = function () {
@@ -39,6 +67,7 @@ window.gettingVoice = function () {
   const recognizer = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
   recognizer.lang = 'en-US';
 
+  textToSpeechModule("Hi there , how may i help you today?")
   document.getElementById("userSaid").textContent = "Listening...";
 
   recognizer.onresult = (event) => {
@@ -80,6 +109,9 @@ async function callApi() {
     if (response.ok) {
       const data = JSON.parse(text);
       console.log('API response:', data);
+
+      // prediction: 'LABEL_3', doctorName: null, appointmentTime: null, appointmentDate: '8/17/2025'}
+      INTETNT = data.prediction
       DOC_NAME = data.doctorName;
       APPOINTMENT_TIME = data.appointmentTime;
       APPOINTMENT_DATE = data.appointmentDate;
@@ -101,21 +133,68 @@ async function callApi() {
 
 
 
+
 // firestore logic and query for pushing data into the firestore db
 async function pushToDb(doctorName, appointmentTime, appointmentDate, hospitalName) {
-  try {
-    await addDoc(collection(db, "DOCTOR_APPOINTMENT"), {
-      appointmentDate,
-      appointmentTime,
-      doctorName,
-      hospitalName,
-    });
-    console.log("APPOINTMENT ADDED TO FIRESTORE");
-  } catch (err) {
-    console.log("ERROR IN ADDING DATA TO DB", err);
+
+  if (INTETNT === "LABEL_0") {
+
+    // adding custom id so that the booking cancellation can be done with ease
+    const customId = appointmentDate
+
+    try {
+      await addDoc(collection(db, "DOCTOR_APPOINTMENT"), {
+        appointmentDate,
+        appointmentTime,
+        doctorName,
+        hospitalName,
+      });
+      const bookingConfirm = `Your appointment with ${doctorName} has been booked at ${appointmentTime} on ${new Date(appointmentDate).toDateString()} at ${hospitalName}.`
+      textToSpeechModule(bookingConfirm)
+      console.log("APPOINTMENT ADDED TO FIRESTORE");
+    } catch (err) {
+      console.log("ERROR IN ADDING DATA TO DB", err);
+    }
   }
+
+
+  // ===================================================================CANCELLATION
+
+
+  // cancellation of appointment
+  else if(INTETNT === "LABEL_1"){
+    const bookingCancelled = `Appointment cancellation pending`
+    textToSpeechModule(bookingCancelled)
+
+
+    // const appointmentCol = collection(db, "DOCTOR_APPOINTMENT");
+    // const snapshot = await getDocs(appointmentCol);
+    // const appointmentDetails = snapshot.docs.map(doc => doc.data());
+
+  }
+
+
+
+
+
+  else if(INTETNT === "LABEL_3"){
+    const greeting = `Hi , how are you doing today?`
+    textToSpeechModule(greeting)
+  }
+  else if(INTETNT === "LABEL_4"){
+    const goodbye = `See You later`
+    textToSpeechModule(greeting)
+  }
+  else {
+    const invalidInput = `I didnt really catch it , please try again`
+    textToSpeechModule(greeting)
+  }
+
+
+
 }
 
+// function used to generate the random hospital name , needs to be called with getRandomElement(array name)
 function getRandomElement(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
