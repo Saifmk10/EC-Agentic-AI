@@ -1,6 +1,6 @@
 // Firebase imports
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-import { getFirestore, collection, addDoc , getDocs} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, getDocs, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 // Firebase config has been added here in the same line to prevent crashes 
 const firebaseConfig = {
@@ -139,9 +139,6 @@ async function pushToDb(doctorName, appointmentTime, appointmentDate, hospitalNa
 
   if (INTETNT === "LABEL_0") {
 
-    // adding custom id so that the booking cancellation can be done with ease
-    const customId = appointmentDate
-
     try {
       await addDoc(collection(db, "DOCTOR_APPOINTMENT"), {
         appointmentDate,
@@ -162,14 +159,42 @@ async function pushToDb(doctorName, appointmentTime, appointmentDate, hospitalNa
 
 
   // cancellation of appointment
-  else if(INTETNT === "LABEL_1"){
-    const bookingCancelled = `Appointment cancellation pending`
-    textToSpeechModule(bookingCancelled)
+  else if (INTETNT === "LABEL_1") {
 
+    try {
+      const bookingCancelled = `Appointment cancellation pending`;
+      textToSpeechModule(bookingCancelled);
 
-    // const appointmentCol = collection(db, "DOCTOR_APPOINTMENT");
-    // const snapshot = await getDocs(appointmentCol);
-    // const appointmentDetails = snapshot.docs.map(doc => doc.data());
+      // fetching all docs in the collection
+      const snapshot = await getDocs(collection(db, "DOCTOR_APPOINTMENT"));
+
+      // filter docs that match with the date given by the user
+      const matchingDocs = snapshot.docs.filter(
+        (docSnap) => docSnap.data().appointmentDate === appointmentDate || 
+                    docSnap.data().doctorName === doctorName ||
+                    docSnap.data().appointmentTime === appointmentTime ||
+                    docSnap.data().hospitalName === hospitalName
+      );
+
+      // delete each matching doc
+      for (const docSnap of matchingDocs) {
+        await deleteDoc(doc(db, "DOCTOR_APPOINTMENT", docSnap.id));
+        console.log(`Deleted ${docSnap.id}`);
+      }
+
+      if (matchingDocs.length === 0) {
+        console.log("No appointments found for that date.");
+        textToSpeechModule(`I couldn’t find any appointments on ${appointmentDate}`);
+      } else {
+        textToSpeechModule(
+          `All appointments for ${new Date(appointmentDate).toDateString()} have been cancelled.`
+        );
+      }
+    } catch (err) {
+      console.log("error removing data :", err);
+      textToSpeechModule("There was an error cancelling your appointment.");
+    }
+
 
   }
 
@@ -177,11 +202,13 @@ async function pushToDb(doctorName, appointmentTime, appointmentDate, hospitalNa
 
 
 
-  else if(INTETNT === "LABEL_3"){
+
+
+  else if (INTETNT === "LABEL_3") {
     const greeting = `Hi , how are you doing today?`
     textToSpeechModule(greeting)
   }
-  else if(INTETNT === "LABEL_4"){
+  else if (INTETNT === "LABEL_4") {
     const goodbye = `See You later`
     textToSpeechModule(greeting)
   }
