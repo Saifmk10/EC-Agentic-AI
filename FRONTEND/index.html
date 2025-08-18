@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EC Agentic AI</title>
+  <link rel="stylesheet" href="output.css">
+</head>
+
+<body class="bg-[#007BFF] min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="w-full flex items-center justify-between px-6 py-4 mt-4" >
+    <!-- Logo (sticks to left) -->
+    <div class="flex-shrink-0">
+      <img src="./assets/assistantLogo.svg" alt="Logo" class="h-10 w-auto">
+    </div>
+
+    <!-- Button group (centered with absolute) -->
+    <div class="absolute left-1/2 transform -translate-x-1/2">
+      <div class="flex flex-wrap justify-center gap-3 sm:gap-6 bg-white rounded-full p-1 shadow-md">
+        <button class="bg-white text-black px-5 py-2 rounded-full font-semibold">
+          <a href="./dashboard.html">MY ACTIVITIES</a>
+        </button>
+        <button class="bg-black text-white px-5 py-2 rounded-full font-semibold">
+          <a href="./VoiceAssistant.html">MY AGENT</a>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex flex-col flex-grow items-center justify-center text-center px-4 mt-20">
+    <img src="./assets/intro_text.svg" alt="intro_text" class="h-[120px] max-w-full">
+
+    <a href="./VoiceAssistant.html">
+    <button class="bg-gray-200 hover:bg-gray-300 text-black font-semibold px-6 py-2 rounded-lg shadow-md mt-20">
+      Speak to Agent
+    </button>
+    </a>
+  </main>
+
+</body>
+
+</html>
