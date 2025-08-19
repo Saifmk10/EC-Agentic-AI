@@ -1,6 +1,7 @@
 // Firebase imports
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 import { getFirestore, collection, addDoc, getDocs, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+import callGemini from "./geminiApiCall.js"
 
 // Firebase config has been added here in the same line to prevent crashes 
 const firebaseConfig = {
@@ -204,17 +205,18 @@ async function pushToDb(doctorName, appointmentTime, appointmentDate, hospitalNa
 
 
 
-  else if (INTETNT === "LABEL_3") {
+  else if (INTETNT === "LABEL_2") {
     const greeting = `Hi , how are you doing today?`
     textToSpeechModule(greeting)
   }
-  else if (INTETNT === "LABEL_4") {
+  else if (INTETNT === "LABEL_3") {
     const goodbye = `See You later`
     textToSpeechModule(greeting)
   }
   else {
-    const invalidInput = `I didnt really catch it , please try again`
-    textToSpeechModule(greeting)
+    const aiResponse = await callGemini(transcript)
+    textToSpeechModule(aiResponse)
+    
   }
 
 
