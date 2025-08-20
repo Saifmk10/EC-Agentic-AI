@@ -70,6 +70,7 @@ window.gettingVoice = function () {
 
   textToSpeechModule("Hi there , how may i help you today?")
   document.getElementById("userSaid").textContent = "Listening...";
+  agentSaid
 
   recognizer.onresult = (event) => {
     transcript = event.results[0][0].transcript;
@@ -148,6 +149,7 @@ async function pushToDb(doctorName, appointmentTime, appointmentDate, hospitalNa
         hospitalName,
       });
       const bookingConfirm = `Your appointment with ${doctorName} has been booked at ${appointmentTime} on ${new Date(appointmentDate).toDateString()} at ${hospitalName}.`
+      document.getElementById("agentSaid").textContent = "AGENT : " + bookingConfirm;
       textToSpeechModule(bookingConfirm)
       console.log("APPOINTMENT ADDED TO FIRESTORE");
     } catch (err) {
@@ -165,6 +167,7 @@ async function pushToDb(doctorName, appointmentTime, appointmentDate, hospitalNa
     try {
       const bookingCancelled = `Appointment cancellation pending`;
       textToSpeechModule(bookingCancelled);
+      textToSpeechModule("Anything else i can help you with today?")
 
       // fetching all docs in the collection
       const snapshot = await getDocs(collection(db, "DOCTOR_APPOINTMENT"));
@@ -185,6 +188,7 @@ async function pushToDb(doctorName, appointmentTime, appointmentDate, hospitalNa
 
       if (matchingDocs.length === 0) {
         console.log("No appointments found for that date.");
+        document.getElementById("agentSaid").textContent = "AGENT : " + "No appointments found for that date.";
         textToSpeechModule(`I couldn’t find any appointments on ${appointmentDate}`);
       } else {
         textToSpeechModule(
@@ -207,15 +211,18 @@ async function pushToDb(doctorName, appointmentTime, appointmentDate, hospitalNa
 
   else if (INTETNT === "LABEL_2") {
     const greeting = `Hi , how are you doing today?`
+    document.getElementById("agentSaid").textContent = "AGENT : " + greeting
     textToSpeechModule(greeting)
   }
   else if (INTETNT === "LABEL_3") {
     const goodbye = `See You later`
+    document.getElementById("agentSaid").textContent = "AGENT : " + goodbye
     textToSpeechModule(greeting)
   }
   else {
     const aiResponse = await callGemini(transcript)
     textToSpeechModule(aiResponse)
+    document.getElementById("agentSaid").textContent = "AGENT : " + aiResponse
     
   }
 
