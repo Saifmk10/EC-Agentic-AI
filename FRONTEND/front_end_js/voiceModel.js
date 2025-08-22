@@ -2,6 +2,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 import { getFirestore, collection, addDoc, getDocs, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 import callGemini from "./geminiApiCall.js"
+// import addingDoctorAppointmentToDb from "./voiceAssistantfunctionModules/addAppointment.js"
 
 // Firebase config has been added here in the same line to prevent crashes 
 const firebaseConfig = {
@@ -63,10 +64,16 @@ function textToSpeechModule(text) {
 
 // speech -> text logic
 window.gettingVoice = function () {
-  console.log("OK HERE WE GO");
+  console.log("VOICE MODULE ACTIVATED.");
+
+  resetAssistant()
 
   const recognizer = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
   recognizer.lang = 'en-US';
+
+  // genrating random model greeting
+  const ASSISTANT_GREETING = ["CMH", "APPOLO", "LOTUS", "MANIPAL"];
+   getRandomElement(ASSISTANT_GREETING);
 
   textToSpeechModule("Hi there , how may i help you today?")
   document.getElementById("userSaid").textContent = "Listening...";
@@ -91,6 +98,27 @@ window.gettingVoice = function () {
 
   recognizer.start();
 };
+
+
+
+
+function resetAssistant() {
+  // stop ongoing speech
+  window.speechSynthesis.cancel();
+
+  // reset variables
+  transcript = "";
+  DOC_NAME = "";
+  APPOINTMENT_TIME = "";
+  APPOINTMENT_DATE = "";
+  INTETNT = "";
+
+  // reset UI
+  document.getElementById("userSaid").textContent = "";
+  document.getElementById("agentSaid").textContent = "";
+}
+
+
 
 
 
@@ -155,6 +183,8 @@ async function pushToDb(doctorName, appointmentTime, appointmentDate, hospitalNa
     } catch (err) {
       console.log("ERROR IN ADDING DATA TO DB", err);
     }
+
+      // addingDoctorAppointmentToDb(doctorName, appointmentTime, appointmentDate, hospitalName)
   }
 
 
