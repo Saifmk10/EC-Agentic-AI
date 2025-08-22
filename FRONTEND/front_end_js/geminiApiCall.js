@@ -45,7 +45,7 @@ async function callGemini(userInput) {
 
     const data = await response.json();
 
-    // ✅ safe check so it won't throw if candidates is missing
+    //safe check so it won't throw if candidates is missing
     if (data.candidates && data.candidates.length > 0) {
       console.log("Gemini raw response:", data.candidates[0].content.parts[0].text);
       geminiResponse = data.candidates[0].content.parts[0].text;
