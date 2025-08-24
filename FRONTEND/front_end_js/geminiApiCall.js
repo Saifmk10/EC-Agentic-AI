@@ -1,5 +1,5 @@
-// If using Node < 18, uncomment this line and install node-fetch
-// import fetch from "node-fetch";
+// this is a generative model that is only used to generate the answers for the doubts asked buy the users
+
 
 const apiKey = "AIzaSyB2FUrFBg2ivlJikLTtbiYOXWtS_IyXzd0";
 let geminiResponse = "";
@@ -37,7 +37,7 @@ async function callGemini(userInput) {
           ],
           generationConfig: {
             maxOutputTokens: 100,
-            temperature: 0.4
+            temperature: 2
           }
         }),
       }

@@ -1,6 +1,9 @@
+// this file is responsible for fetching all the appointments that are added into the database by the users
+// it converts each entry into a fomatted card format so users will able to see it on a dashboard with ease
+
+
 // Firebase imports
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-analytics.js";
 import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 // Firebase config
@@ -16,7 +19,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+const db = getFirestore(app); 
 
 
 
