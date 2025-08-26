@@ -10,7 +10,7 @@ const apiKey = "AIzaSyB2FUrFBg2ivlJikLTtbiYOXWtS_IyXzd0"; //gemini api key REMOV
 // const inputURL = URL.createObjectURL(inputFile)
 
 // function responsible for the convertion of text within the image to actual usable text
-async function imageTextExtraction() {
+export async function imageTextExtraction() {
     try {
         const result = await Tesseract.recognize(inputFile, 'eng', {
             logger: info => console.log(info)
@@ -28,7 +28,7 @@ async function imageTextExtraction() {
 
 
 // this fucntion is responsible for proper formatting of the raw text that has been extracted from the imageTextExtration()
-async function geminiDataParsing(plaintext) {
+export async function geminiDataParsing(plaintext) {
 
     try {
         const response = await fetch(
@@ -64,7 +64,9 @@ async function geminiDataParsing(plaintext) {
                                         3. If a field is missing, fill it with null.
                                         4. If there are multiple medicines, repeat the pattern (medicineN, doseN, timingN) for each.
                                         5. Do NOT wrap the JSON in code blocks, markdown, or extra text — output ONLY raw JSON. 
-                                        6. Also make sure the spelling is corrected for all the medicines`
+                                        6. Also make sure the spelling is corrected for all the medicines
+                                        7. Ignore extra characters, symbols, or broken formatting
+                                        8.Return results strictly in this JSON format`
                                 }
                             ]
                         },
@@ -77,7 +79,7 @@ async function geminiDataParsing(plaintext) {
                         }
                     ],
                     generationConfig: {
-                        maxOutputTokens: 100,
+                        maxOutputTokens: 500,
                         temperature: 0.2
                     }
                 }),
@@ -86,8 +88,10 @@ async function geminiDataParsing(plaintext) {
 
 
         
+        
         const data = await response.json() // fetching the data from 
         const textOutput = data.candidates[0].content.parts[0].text;
+console.log("GEMINI RESPONSE : " , textOutput)
 
         // section responsible for converting the raw text into json structure so we can convert the text into json format
         const jsonStart = textOutput.indexOf("{");
@@ -128,9 +132,9 @@ async function geminiDataParsing(plaintext) {
 }
 
 
+// console.log("THE BELLOW OUTPUT IS COMING FROM prescriptionParser.js path is EC-Agentic-AI\FRONTEND\front_end_js\dashboard\prescriptions\prescriptionParser.js")
+// const finalOutput = await imageTextExtraction()
+// console.log("FINAL OUTPUT : ", finalOutput)
 
-const finalOutput = await imageTextExtraction()
-console.log("FINAL OUTPUT : ", finalOutput)
-
-const parsedOutput = await geminiDataParsing(finalOutput)
-console.log("PARSED OUTPUT : ", parsedOutput.medicines[0])
+// const parsedOutput = await geminiDataParsing(finalOutput)
+// console.log("PARSED OUTPUT : ", parsedOutput.medicines)
