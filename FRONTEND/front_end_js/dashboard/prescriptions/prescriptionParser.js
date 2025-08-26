@@ -85,16 +85,42 @@ async function geminiDataParsing(plaintext) {
         );
 
 
-        const data = await response.json()
-        const textOuput =  data.candidates[0].content.parts[0].text;
-        // const parsedOutput = JSON.parse(textOuput)
-        return textOuput
-                // return parsedOutput  some error in this needs to be fixed
-        // return data
+        
+        const data = await response.json() // fetching the data from 
+        const textOutput = data.candidates[0].content.parts[0].text;
+
+        // section responsible for converting the raw text into json structure so we can convert the text into json format
+        const jsonStart = textOutput.indexOf("{");
+        const jsonEnd = textOutput.lastIndexOf("}") + 1;
+        const cleanJson = textOutput.substring(jsonStart, jsonEnd);
+
+        // section responsible for the parsing of data into json format from where we can start accessing the data
+        const parsedOutput = JSON.parse(cleanJson)
+
+        // return parsedOutput[`medicine${1}`]
+
+
+        // var that are being used to save the data from the parsed details individually  
+        let medicines = [];
+        let doses = [];
+        let timings = [];
+
+
+        // logic to iterate through all the elements within the json
+        let i = 0;
+        while (parsedOutput[`medicine${i}`]) {
+            medicines.push(parsedOutput[`medicine${i}`]);
+            doses.push(parsedOutput[`dose${i}`]);
+            timings.push(parsedOutput[`timing${i}`]);
+            i++;
+        }
+
+        return { medicines, doses, timings, doctor: parsedOutput.doctor_name, other: parsedOutput.other_info };
 
     }
     catch (error) {
         console.log("ERROR IN THE GEMINI MODEL : ", error)
+        return null
     }
 
 
@@ -107,4 +133,4 @@ const finalOutput = await imageTextExtraction()
 console.log("FINAL OUTPUT : ", finalOutput)
 
 const parsedOutput = await geminiDataParsing(finalOutput)
-console.log("PARSED OUTPUT : " , parsedOutput)
+console.log("PARSED OUTPUT : ", parsedOutput.medicines[0])
