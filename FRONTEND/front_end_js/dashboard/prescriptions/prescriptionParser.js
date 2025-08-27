@@ -2,34 +2,41 @@
 // here we are using Tesseract to make thing simple so we can extract the test from a handwritten prescription 
 import Tesseract from "https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.esm.min.js";
 
-
-
-const inputFile = "/EC-Agentic-AI/FRONTEND/front_end_js/dashboard/prescriptions/test_input2.png" //test subject
+// const inputFile = "/EC-Agentic-AI/FRONTEND/front_end_js/dashboard/prescriptions/test_input2.png" //test subject
 const apiKey = "AIzaSyB2FUrFBg2ivlJikLTtbiYOXWtS_IyXzd0"; //gemini api key REMOVE IN PRODUCTION
 
-// const inputURL = URL.createObjectURL(inputFile)
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
-// function responsible for the convertion of text within the image to actual usable text
-export async function imageTextExtraction() {
+// Firebase config has been added here in the same line to prevent crashes 
+const firebaseConfig = {
+  apiKey: "AIzaSyAVbsFHucj0GXOM0cLViDc1Enw0pmULNAQ",
+  authDomain: "ec-agentic-ai-db.firebaseapp.com",
+  projectId: "ec-agentic-ai-db",
+  storageBucket: "ec-agentic-ai-db.firebasestorage.app",
+  messagingSenderId: "454169373003",
+  appId: "1:454169373003:web:8a422fd4e3b272d3d720ce",
+  measurementId: "G-BGSZ0BD2RQ"
+};
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// function responsible for the conversion of text within the image to actual usable text
+export async function imageTextExtraction(inputFile) {
     try {
         const result = await Tesseract.recognize(inputFile, 'eng', {
             logger: info => console.log(info)
-        })
-
-        // console.log("FINAL OUTPUT = ", result.data.text)
+        });
         return result.data.text;
     }
     catch (error) {
-        console.log("ERROR :", error)
-        return error;
+        console.log("ERROR :", error);
+        return null;
     }
 }
 
-
-
 // this fucntion is responsible for proper formatting of the raw text that has been extracted from the imageTextExtration()
 export async function geminiDataParsing(plaintext) {
-
     try {
         const response = await fetch(
             "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=" + apiKey,
@@ -86,31 +93,22 @@ export async function geminiDataParsing(plaintext) {
             }
         );
 
-
-        
-        
-        const data = await response.json() // fetching the data from 
+        const data = await response.json();
         const textOutput = data.candidates[0].content.parts[0].text;
-console.log("GEMINI RESPONSE : " , textOutput)
+        console.log("GEMINI RESPONSE : " , textOutput);
 
-        // section responsible for converting the raw text into json structure so we can convert the text into json format
+        // extract the clean JSON substring
         const jsonStart = textOutput.indexOf("{");
         const jsonEnd = textOutput.lastIndexOf("}") + 1;
         const cleanJson = textOutput.substring(jsonStart, jsonEnd);
 
-        // section responsible for the parsing of data into json format from where we can start accessing the data
-        const parsedOutput = JSON.parse(cleanJson)
+        // parse JSON
+        const parsedOutput = JSON.parse(cleanJson);
 
-        // return parsedOutput[`medicine${1}`]
-
-
-        // var that are being used to save the data from the parsed details individually  
         let medicines = [];
         let doses = [];
         let timings = [];
 
-
-        // logic to iterate through all the elements within the json
         let i = 0;
         while (parsedOutput[`medicine${i}`]) {
             medicines.push(parsedOutput[`medicine${i}`]);
@@ -123,18 +121,46 @@ console.log("GEMINI RESPONSE : " , textOutput)
 
     }
     catch (error) {
-        console.log("ERROR IN THE GEMINI MODEL : ", error)
-        return null
+        console.log("ERROR IN THE GEMINI MODEL : ", error);
+        return null;
     }
-
-
-    // return finalparsedOutput;
 }
 
+// Handles file input + parsing workflow
+export async function handlePrescriptionUpload(file) {
+    if (!file) {
+        console.log("No file selected.");
+        return null;
+    }
 
-// console.log("THE BELLOW OUTPUT IS COMING FROM prescriptionParser.js path is EC-Agentic-AI\FRONTEND\front_end_js\dashboard\prescriptions\prescriptionParser.js")
-// const finalOutput = await imageTextExtraction()
-// console.log("FINAL OUTPUT : ", finalOutput)
+    console.log("Selected file:", file.name);
 
-// const parsedOutput = await geminiDataParsing(finalOutput)
-// console.log("PARSED OUTPUT : ", parsedOutput.medicines)
+    // 1. Extract text from image
+    const finalOutput = await imageTextExtraction(file);
+    console.log("FINAL OUTPUT:", finalOutput);
+
+    // 2. Parse extracted text with Gemini
+    const parsedOutput = await geminiDataParsing(finalOutput);
+    console.log("PARSED OUTPUT:", parsedOutput);
+
+    return parsedOutput;  // this can be passed to DB or used directly
+}
+
+// adding the json content into the db 
+export async function pushingPrescriptionDataToDB(file) {
+    const parsedOutput = await handlePrescriptionUpload(file);
+    if (!parsedOutput) return;
+
+    try {
+        await addDoc(collection(db, "USERS_PRESCRIPTIONS"), {
+            medicine: parsedOutput.medicines,
+            dose: parsedOutput.doses,
+            timing: parsedOutput.timings,
+            doctor: parsedOutput.doctor,
+            other: parsedOutput.other
+        });
+        console.log("PRESCRIPTION ADDED TO FIRESTORE");
+    } catch (err) {
+        console.log("ERROR IN ADDING DATA TO DB", err);
+    }
+}

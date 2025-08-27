@@ -61,7 +61,10 @@
 
             <!-- comes under my prescriptions itself , a feature that allows the users to add the prescription into the dashboard -->
 
-            <div class="bg-[#000000] rounded-2xl h-[50px] mt-[15px] flex justify-center items-center">
+
+            <div id="addPrescriptionBtn"
+                class="bg-[#000000] rounded-2xl h-[50px] mt-[15px] flex justify-center items-center cursor-pointer">
+                <input type="file" id="imageUpload" accept="image/*" style="display: none;">
                 <div class="text-[#ffffff] flex items-center gap-2">
                     ADD PRESCRIPTION
                     <span>
@@ -69,6 +72,7 @@
                     </span>
                 </div>
             </div>
+
 
         </div>
 
@@ -162,7 +166,7 @@
             <div
                 class="mt-8 w-[300px] h-[80px] rounded-2xl bg-gradient-to-r from-red-600 to-black p-4 text-white text-center">
                 <div class="font-semibold">UPCOMING MED</div>
-                <div>Atortib - 2:30pm</div>
+                <div>Atortib - 1:30pm</div>
                   
             </div>
         </div>
@@ -171,9 +175,44 @@
 
 </body>
 
+<!-- this provides all the appointment details from the db to the ui -->
 <script type="module" src="./front_end_js/dashboard/appointments/appointmentDetails.js"></script>
 
-<!-- <script type="module" src="./front_end_js/dashboard/prescriptions/prescriptionParser.js"></script> -->
 
-<script type="module" src="./front_end_js/dashboard/prescriptions/prescriptionDBLogic.js"></script>
+<!-- script used to get the file into the parsing model file prescriptionParser.js  WORKS NOW DONOT TOUCH -->
+<script type="module">
+  // Import function to parse & push prescription data to Firestore
+  import { pushingPrescriptionDataToDB } from "./front_end_js/dashboard/prescriptions/prescriptionParser.js";
+
+  // Grab the file input and button from DOM
+  const fileInput = document.getElementById("imageUpload");
+  const addBtn = document.getElementById("addPrescriptionBtn");
+
+  // Click button → opens file picker
+  addBtn.onclick = () => fileInput.click();
+
+  // File selected → parse and push to Firestore
+  fileInput.onchange = async (e) => {
+    const file = e.target.files[0];
+    if (!file) {
+      console.log("No file selected!");
+      return;
+    }
+
+    try {
+      // Push the prescription data to Firestore
+      await pushingPrescriptionDataToDB(file);
+
+      // Feedback to user
+      alert("Prescription uploaded successfully!");
+      console.log("Prescription uploaded successfully!");
+    } catch (error) {
+      console.error("Error uploading prescription:", error);
+      alert("Failed to upload prescription. Check console for details.");
+    }
+  };
+</script>
+
+
+
 </html>
