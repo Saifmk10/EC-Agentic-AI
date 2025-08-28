@@ -25,74 +25,60 @@
         </button>
     </div>
 
-
     <!-- Main Content -->
     <div class="grid grid-cols-1 md:grid-cols-3 justify-center content-center gap-6 mt-10 w-full max-w-6xl">
 
         <!-- My Prescriptions -->
         <div>
-
             <div class="bg-gray-300 rounded-2xl p-4">
                 <div class="flex justify-between items-center mb-4">
-                    <h2 class="bg-[#000000] text-[#ffffff]  px-4 py-1 rounded-lg">MY PRESCRIPTIONS</h2>
-
+                    <h2 class="bg-[#000000] text-[#ffffff] px-4 py-1 rounded-lg">MY PRESCRIPTIONS</h2>
                 </div>
 
                 <!-- Scrollable prescriptions list -->
-                <div class="h-[300px] overflow-y-auto space-y-4 pr-2">
-                    <div class="bg-black text-white rounded-2xl p-4">
-                        <p class="text-lg font-medium mb-2">DR ROBERT'S PRESCRIPTION</p>
-                        <div class="flex items-center gap-3">
-                            <span class="text-lg"><img src="./assets/Vector.svg" alt=""></span>
-                            <p class="text-lg">Manipal Hospital</p>
-                        </div>
-                    </div>
+                <div class="h-[300px] overflow-y-auto space-y-4 pr-2" id="prescriptions-list">
+                    <p class="font-mono font-medium" id="no_prescriptions">NO PRESCRIPTIONS ADDED</p>
+                </div>
 
-                    <div id="add_prescription" class="bg-black text-white rounded-2xl p-4">
-                        <p class="text-lg font-medium mb-2">DR JOHN'S PRESCRIPTION</p>
-                        <div class="flex items-center gap-3">
-                            <span class="text-lg"><img src="./assets/Vector.svg" alt=""></span>
-                            <p class="text-lg">MIMS Hospital</p>
-                        </div>
+                <!-- Hidden template for prescriptions (outside scrollable list) -->
+                <div class="bg-black text-white rounded-2xl p-4 hidden" id="prescription_card">
+                    <p class="text-lg font-medium mb-2">
+                        <span class="prescription_card_doctor_name">DR ROBERT</span>'S PRESCRIPTION
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <span class="text-lg"><img src="./assets/Vector.svg" alt=""></span>
+                        <p class="text-lg prescription_card_hospital">Manipal Hospital</p>
                     </div>
+                </div>
 
+                <!-- Add Prescription Button -->
+                <div id="addPrescriptionBtn" class="bg-[#000000] rounded-2xl h-[50px] mt-[15px] flex justify-center items-center cursor-pointer">
+                    <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+                    <div class="text-[#ffffff] flex items-center gap-2">
+                        ADD PRESCRIPTION
+                        <span><img src="./assets/add_circle.svg" alt="add_button" class="h-[35px]"></span>
+                    </div>
                 </div>
             </div>
-
-            <!-- comes under my prescriptions itself , a feature that allows the users to add the prescription into the dashboard -->
-
-
-            <div id="addPrescriptionBtn"
-                class="bg-[#000000] rounded-2xl h-[50px] mt-[15px] flex justify-center items-center cursor-pointer">
-                <input type="file" id="imageUpload" accept="image/*" style="display: none;">
-                <div class="text-[#ffffff] flex items-center gap-2">
-                    ADD PRESCRIPTION
-                    <span>
-                        <img src="./assets/add_circle.svg" alt="add_button" class="h-[35px]">
-                    </span>
-                </div>
-            </div>
-
-
         </div>
-
-
 
         <!-- Medicines Stock -->
         <div class="bg-gray-200 rounded-lg p-4 flex flex-col h-[400px]">
             <div class="flex justify-between items-center mb-4">
                 <h2 class="bg-[#000000] text-[#ffffff]  px-4 py-1 rounded-lg">MEDICINES STOCK</h2>
-
             </div>
-            <div class="space-y-4 overflow-y-auto h-[400px] pr-2">
-                <div>
-                    <p class="text-[#ffffff]  bg-[#000000] rounded px-3 py-1 inline-block">Acetaminophen</p>
-                    <p class="text-sm mt-1">23/50</p>
-                    <div class="w-full bg-[#000000] rounded-full h-2">
-                        <div class="bg-green-500 h-2 rounded-full" style="width:46%"></div>
-                    </div>
+
+            
+             <div  id="medicine_card_template">
+            <div>
+                <p class="text-[#ffffff] bg-[#000000] rounded px-3 py-1 inline-block medicine_name">Atortib</p>
+                <p class="text-sm mt-1 medicine_count">10/50</p>
+                <div class="w-full bg-[#000000] rounded-full h-2">
+                    <div class="bg-green-500 h-2 rounded-full medicine_bar" style="width:20%"></div>
                 </div>
-                <div>
+            </div>
+
+                <!-- <div>
                     <p class="text-[#ffffff]  bg-[#000000] rounded px-3 py-1 inline-block">Atortib</p>
                     <p class="text-sm mt-1">23/50</p>
                     <div class="w-full bg-[#000000] rounded-full h-2">
@@ -106,7 +92,6 @@
                         <div class="bg-green-500 h-2 rounded-full" style="width:46%"></div>
                     </div>
                 </div>
-                <!-- Extra scrollable items -->
                 <div>
                     <p class="text-[#ffffff]  bg-[#000000] rounded px-3 py-1 inline-block">Extra Med 1</p>
                     <p class="text-sm mt-1">15/50</p>
@@ -120,19 +105,12 @@
                     <div class="w-full bg-[#000000] rounded-full h-2">
                         <div class="bg-yellow-500 h-2 rounded-full" style="width:30%"></div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
 
-
-
-
-
         <!-- Appointments -->
         <div class="bg-gray-200 rounded-lg p-4 flex flex-col h-[400px] overflow-y-scroll ">
-            <!-- <h2 class="bg-[#000000] text-[#ffffff]  px-4 py-1 rounded-lg inline-block mb-4 w-[150px]">
-                APPOINTMENTS
-            </h2> -->
             <div class="flex justify-between items-center mb-4">
                 <h2 class="bg-[#000000] text-[#ffffff]  px-4 py-1 rounded-lg">APPOINTMENTS </h2>
             </div>
@@ -159,51 +137,36 @@
                 </div>
             </div>
         </div>
-        <!-- Bottom Center Logo -->
+
         <!-- Bottom Center Logo -->
         <div class="hidden lg:block fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
-            <!-- Upcoming Medicine -->
-            <div
-                class="mt-8 w-[300px] h-[80px] rounded-2xl bg-gradient-to-r from-red-600 to-black p-4 text-white text-center">
+            <div class="mt-8 w-[300px] h-[80px] rounded-2xl bg-gradient-to-r from-red-600 to-black p-4 text-white text-center">
                 <div class="font-semibold">UPCOMING MED</div>
                 <div>Atortib - 1:30pm</div>
-                  
             </div>
         </div>
 
-
-
 </body>
 
-<!-- this provides all the appointment details from the db to the ui -->
+<!-- JS Scripts -->
 <script type="module" src="./front_end_js/dashboard/appointments/appointmentDetails.js"></script>
+<script type="module" src="./front_end_js/dashboard/prescriptions/fetchingPrescriptionDetails.js"></script>
+<script type="module" src="./front_end_js/dashboard/prescriptions/medToTake.js"></script>
 
-
-<!-- script used to get the file into the parsing model file prescriptionParser.js  WORKS NOW DONOT TOUCH -->
 <script type="module">
-  // Import function to parse & push prescription data to Firestore
   import { pushingPrescriptionDataToDB } from "./front_end_js/dashboard/prescriptions/prescriptionParser.js";
 
-  // Grab the file input and button from DOM
   const fileInput = document.getElementById("imageUpload");
   const addBtn = document.getElementById("addPrescriptionBtn");
 
-  // Click button → opens file picker
   addBtn.onclick = () => fileInput.click();
 
-  // File selected → parse and push to Firestore
   fileInput.onchange = async (e) => {
     const file = e.target.files[0];
-    if (!file) {
-      console.log("No file selected!");
-      return;
-    }
+    if (!file) return;
 
     try {
-      // Push the prescription data to Firestore
       await pushingPrescriptionDataToDB(file);
-
-      // Feedback to user
       alert("Prescription uploaded successfully!");
       console.log("Prescription uploaded successfully!");
     } catch (error) {
@@ -212,7 +175,5 @@
     }
   };
 </script>
-
-
 
 </html>
