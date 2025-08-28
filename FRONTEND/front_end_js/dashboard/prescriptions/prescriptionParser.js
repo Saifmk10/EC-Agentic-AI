@@ -148,19 +148,35 @@ export async function handlePrescriptionUpload(file) {
 
 // adding the json content into the db 
 export async function pushingPrescriptionDataToDB(file) {
+
+    // using dummy docotor name for hackathon purpose
+    const DOCTOR_NAME = ["ROBERT", "JOHNSON", "ROY", "JACOB"];
+    const RANDOM_DOCTOR_NAME = getRandomElement(DOCTOR_NAME);
+
+    // using randome hospital name here for hackathon purpose
+    const HOSPITAL_NAME = ["CMH HOSPITAL", "APPOLO HOSPITAL", "LOTUS HOSPITAL", "MANIPAL HOSPITAL"];
+    const RANDOM_HOSPITAL_NAME = getRandomElement(HOSPITAL_NAME);
+
+
     const parsedOutput = await handlePrescriptionUpload(file);
     if (!parsedOutput) return;
 
     try {
         await addDoc(collection(db, "USERS_PRESCRIPTIONS"), {
+            doctor : RANDOM_DOCTOR_NAME,
+            hospital : RANDOM_HOSPITAL_NAME,
             medicine: parsedOutput.medicines,
             dose: parsedOutput.doses,
             timing: parsedOutput.timings,
-            doctor: parsedOutput.doctor,
             other: parsedOutput.other
         });
         console.log("PRESCRIPTION ADDED TO FIRESTORE");
     } catch (err) {
         console.log("ERROR IN ADDING DATA TO DB", err);
     }
+}
+
+
+function getRandomElement(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
 }

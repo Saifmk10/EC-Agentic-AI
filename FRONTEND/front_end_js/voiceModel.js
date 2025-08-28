@@ -42,7 +42,7 @@ function textToSpeechModule(text) {
     const utterance = new SpeechSynthesisUtterance(text)
     utterance.rate = 0.7;
     utterance.pitch = 2;
-    utterance.lang = 'en-US';
+    utterance.lang = 'en-US'; 
 
     utterance.onstart = () => console.log("Speech started...");
     utterance.onend = () => console.log("Speech finished.");
