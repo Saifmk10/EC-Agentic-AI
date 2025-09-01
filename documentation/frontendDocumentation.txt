@@ -1,0 +1,3 @@
+Front end documentation will cover most of the tech stack and the file architecture that has been used for the front end of this application
+
+TECH STACK USED : TailwindCss
