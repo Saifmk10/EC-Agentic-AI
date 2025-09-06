@@ -1,3 +1,6 @@
+// this file is used to fetch the primiary details from the prescription added and convert that into a card format that can be displayed in the ui
+
+
 // Firebase imports
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
