@@ -52,7 +52,8 @@
                 </div>
 
                 <!-- Add Prescription Button -->
-                <div id="addPrescriptionBtn" class="bg-[#000000] rounded-2xl h-[50px] mt-[15px] flex justify-center items-center cursor-pointer">
+                <div id="addPrescriptionBtn"
+                    class="bg-[#000000] rounded-2xl h-[50px] mt-[15px] flex justify-center items-center cursor-pointer">
                     <input type="file" id="imageUpload" accept="image/*" style="display: none;">
                     <div class="text-[#ffffff] flex items-center gap-2">
                         ADD PRESCRIPTION
@@ -63,51 +64,27 @@
         </div>
 
         <!-- Medicines Stock -->
-        <div class="bg-gray-200 rounded-lg p-4 flex flex-col h-[400px]">
-            <div class="flex justify-between items-center mb-4">
+        <div class="bg-gray-200 rounded-lg p-4 flex flex-col h-[400px] overflow-y-scroll">
+
+            <div class="flex justify-between items-center mb-4 ">
                 <h2 class="bg-[#000000] text-[#ffffff]  px-4 py-1 rounded-lg">MEDICINES STOCK</h2>
             </div>
 
-            
-             <div  id="medicine_card_template">
-            <div>
-                <p class="text-[#ffffff] bg-[#000000] rounded px-3 py-1 inline-block medicine_name">Atortib</p>
+            <!-- Container for cloned cards -->
+            <div id="cards_container"></div>
+
+            <!-- Template (hidden initially) -->
+            <div id="medicine_card_template" class="pt-5 hidden">
+                <p class="text-[#ffffff] bg-[#000000] rounded  px-3 py-1 inline-block medicine_name">Atortib</p>
                 <p class="text-sm mt-1 medicine_count">10/50</p>
                 <div class="w-full bg-[#000000] rounded-full h-2">
                     <div class="bg-green-500 h-2 rounded-full medicine_bar" style="width:20%"></div>
                 </div>
             </div>
 
-                <!-- <div>
-                    <p class="text-[#ffffff]  bg-[#000000] rounded px-3 py-1 inline-block">Atortib</p>
-                    <p class="text-sm mt-1">23/50</p>
-                    <div class="w-full bg-[#000000] rounded-full h-2">
-                        <div class="bg-green-500 h-2 rounded-full" style="width:46%"></div>
-                    </div>
-                </div>
-                <div>
-                    <p class="text-[#ffffff]  bg-[#000000] rounded px-3 py-1 inline-block">Aspirin</p>
-                    <p class="text-sm mt-1">23/50</p>
-                    <div class="w-full bg-[#000000] rounded-full h-2">
-                        <div class="bg-green-500 h-2 rounded-full" style="width:46%"></div>
-                    </div>
-                </div>
-                <div>
-                    <p class="text-[#ffffff]  bg-[#000000] rounded px-3 py-1 inline-block">Extra Med 1</p>
-                    <p class="text-sm mt-1">15/50</p>
-                    <div class="w-full bg-[#000000] rounded-full h-2">
-                        <div class="bg-yellow-500 h-2 rounded-full" style="width:30%"></div>
-                    </div>
-                </div>
-                <div>
-                    <p class="text-[#ffffff]  bg-[#000000] rounded px-3 py-1 inline-block">Extra Med 3</p>
-                    <p class="text-sm mt-1">15/50</p>
-                    <div class="w-full bg-[#000000] rounded-full h-2">
-                        <div class="bg-yellow-500 h-2 rounded-full" style="width:30%"></div>
-                    </div>
-                </div> -->
-            </div>
         </div>
+
+
 
         <!-- Appointments -->
         <div class="bg-gray-200 rounded-lg p-4 flex flex-col h-[400px] overflow-y-scroll ">
@@ -140,7 +117,8 @@
 
         <!-- Bottom Center Logo -->
         <div class="hidden lg:block fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
-            <div class="mt-8 w-[300px] h-[80px] rounded-2xl bg-gradient-to-r from-red-600 to-black p-4 text-white text-center">
+            <div
+                class="mt-8 w-[300px] h-[80px] rounded-2xl bg-gradient-to-r from-red-600 to-black p-4 text-white text-center">
                 <div class="font-semibold">UPCOMING MED</div>
                 <div>Atortib - 1:30pm</div>
             </div>
@@ -151,29 +129,30 @@
 <!-- JS Scripts -->
 <script type="module" src="./front_end_js/dashboard/appointments/appointmentDetails.js"></script>
 <script type="module" src="./front_end_js/dashboard/prescriptions/fetchingPrescriptionDetails.js"></script>
-<script type="module" src="./front_end_js/dashboard/prescriptions/medToTake.js"></script>
+<!-- <script type="module" src="./front_end_js/dashboard/prescriptions/medToTake.js"></script> -->
+<script type="module" src="./front_end_js/dashboard/prescriptions/fetchingmedNames.js"></script>
 
 <script type="module">
-  import { pushingPrescriptionDataToDB } from "./front_end_js/dashboard/prescriptions/prescriptionParser.js";
+    import { pushingPrescriptionDataToDB } from "./front_end_js/dashboard/prescriptions/prescriptionParser.js";
 
-  const fileInput = document.getElementById("imageUpload");
-  const addBtn = document.getElementById("addPrescriptionBtn");
+    const fileInput = document.getElementById("imageUpload");
+    const addBtn = document.getElementById("addPrescriptionBtn");
 
-  addBtn.onclick = () => fileInput.click();
+    addBtn.onclick = () => fileInput.click();
 
-  fileInput.onchange = async (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
+    fileInput.onchange = async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
 
-    try {
-      await pushingPrescriptionDataToDB(file);
-      alert("Prescription uploaded successfully!");
-      console.log("Prescription uploaded successfully!");
-    } catch (error) {
-      console.error("Error uploading prescription:", error);
-      alert("Failed to upload prescription. Check console for details.");
-    }
-  };
+        try {
+            await pushingPrescriptionDataToDB(file);
+            alert("Prescription uploaded successfully!");
+            console.log("Prescription uploaded successfully!");
+        } catch (error) {
+            console.error("Error uploading prescription:", error);
+            alert("Failed to upload prescription. Check console for details.");
+        }
+    };
 </script>
 
 </html>

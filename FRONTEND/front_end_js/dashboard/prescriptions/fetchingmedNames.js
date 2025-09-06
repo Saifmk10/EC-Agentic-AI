@@ -17,45 +17,32 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// Elements
-const prescriptionsList = document.getElementById("prescriptions-list");
-const cardTemplate = document.getElementById("prescription_card");
-const noPrescriptions = document.getElementById("no_prescriptions");
+const cardTemplate = document.querySelector("#medicine_card_template");
+const cardsContainer = document.querySelector("#cards_container");
 
-// Fetch prescription details from Firestore
-async function fetchingPrescriptionDetails() {
-    const prescriptionsCol = collection(db, "USERS_PRESCRIPTIONS");
-    const snapshot = await getDocs(prescriptionsCol);
-    const prescriptionDetails = snapshot.docs.map(doc => doc.data());
 
-    console.log("Total prescriptions:", prescriptionDetails.length);
+// function fetching all the medicine names that are store in the db
+async function fetchingMedicineDetails() {
+    const medicineDBCollection = collection(db, "USERS_PRESCRIPTIONS");
+    const snapshot = await getDocs(medicineDBCollection);
+    const medicineDetails = snapshot.docs.map(doc => doc.data());
 
-    if (!cardTemplate || !prescriptionsList) return;
+    console.log("MEDICINE COUNT : ", medicineDetails.length);
 
-    if (prescriptionDetails.length === 0) {
-        noPrescriptions.style.display = "block";
-    } else {
-        noPrescriptions.style.display = "none";
-
-        prescriptionDetails.forEach(app => {
+    medicineDetails.forEach((prescription) => {
+        prescription.medicine.forEach((med, index) => {
+            // clone  of the template
             const newCard = cardTemplate.cloneNode(true);
-            newCard.removeAttribute("id");
-            newCard.classList.remove("hidden");
+            newCard.classList.remove("hidden"); 
 
-            // Update doctor name
-            const doctorSpan = newCard.querySelector(".prescription_card_doctor_name");
-            if (doctorSpan) doctorSpan.textContent = app.doctor || "Not specified";
+            // update medicine name 
+            newCard.querySelector(".medicine_name").textContent = med;
+            newCard.querySelector(".medicine_count").textContent = `${index + 10}/${prescription.medicine.length}`;
 
-            // Update hospital name
-            const hospitalEl = newCard.querySelector(".prescription_card_hospital");
-            if (hospitalEl) hospitalEl.textContent = app.hospital || "Not specified";
-
-            const meds = newCard.querySelector(".medicine_name")
-            if (meds) meds.textContent = app.medicine || "Not specified";
-
-            prescriptionsList.appendChild(newCard);
+            // adding the clone into the main parent continer
+            cardsContainer.appendChild(newCard);
         });
-    }
+    });
 }
 
-fetchingPrescriptionDetails();
+fetchingMedicineDetails();
