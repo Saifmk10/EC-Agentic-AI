@@ -1,3 +1,6 @@
+// line 78 needs to be changed
+
+
 // Firebase imports
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 import { getFirestore, collection, addDoc, getDocs, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
@@ -62,7 +65,7 @@ function textToSpeechModule(text) {
 
 
 
-// speech -> text logic
+// speech -> text logic , this function is responsible for taking in the user input wtever the user says after pressing the button 
 window.gettingVoice = function () {
   console.log("VOICE MODULE ACTIVATED.");
 
@@ -75,7 +78,7 @@ window.gettingVoice = function () {
   const ASSISTANT_GREETING = ["CMH", "APPOLO", "LOTUS", "MANIPAL"];
    getRandomElement(ASSISTANT_GREETING);
 
-  textToSpeechModule("Hi there , how may i help you today?")
+   //  this needs to removed from here and added into some new function
   document.getElementById("userSaid").textContent = "Listening...";
   agentSaid
 
@@ -167,6 +170,7 @@ async function callApi() {
 // firestore logic and query for pushing data into the firestore db
 async function pushToDb(doctorName, appointmentTime, appointmentDate, hospitalName) {
 
+  // booking of a doctor appointment
   if (INTETNT === "LABEL_0") {
 
     try {
@@ -176,9 +180,22 @@ async function pushToDb(doctorName, appointmentTime, appointmentDate, hospitalNa
         doctorName,
         hospitalName,
       });
-      const bookingConfirm = `Your appointment with ${doctorName} has been booked at ${appointmentTime} on ${new Date(appointmentDate).toDateString()} at ${hospitalName}.`
-      document.getElementById("agentSaid").textContent = "AGENT : " + bookingConfirm;
-      textToSpeechModule(bookingConfirm)
+
+
+      //  the user provides all of these details then the appointment will be booked
+      if(doctorName && appointmentTime && appointmentDate){
+        const bookingConfirm = `Your appointment with ${doctorName} has been booked at ${appointmentTime} on ${new Date(appointmentDate).toDateString()} at ${hospitalName}.`
+        document.getElementById("agentSaid").textContent = "AGENT : " + bookingConfirm;
+        textToSpeechModule(bookingConfirm)
+      }
+      // if all the detais mentioned above are not providede then the booking will fail
+      else{ 
+        const bookingFailed = `Sorry , appointment cannot be booked without DOCTOR NAME , APPOINTMENT TIME and APPOINTMENT DATE. Please provide the mentioned details to book an appointment`
+        document.getElementById("agentSaid").textContent = "AGENT : " + bookingFailed;
+        textToSpeechModule(bookingFailed)
+      }
+
+      
       console.log("APPOINTMENT ADDED TO FIRESTORE");
     } catch (err) {
       console.log("ERROR IN ADDING DATA TO DB", err);
@@ -221,9 +238,9 @@ async function pushToDb(doctorName, appointmentTime, appointmentDate, hospitalNa
         document.getElementById("agentSaid").textContent = "AGENT : " + "No appointments found for that date.";
         textToSpeechModule(`I couldn’t find any appointments on ${appointmentDate}`);
       } else {
-        textToSpeechModule(
-          `All appointments for ${new Date(appointmentDate).toDateString()} have been cancelled.`
-        );
+        const appointmentCancelled =  `All appointments for ${new Date(appointmentDate).toDateString()} have been cancelled.`;
+        textToSpeechModule( appointmentCancelled);
+        document.getElementById("agentSaid").textContent = "AGENT : " + appointmentCancelled;
       }
     } catch (err) {
       console.log("error removing data :", err);
@@ -256,11 +273,15 @@ async function pushToDb(doctorName, appointmentTime, appointmentDate, hospitalNa
     
   }
 
-
-
 }
 
 // function used to generate the random hospital name , needs to be called with getRandomElement(array name)
 function getRandomElement(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
+ 
+// temporary fix for the error where the agent was speaking and listening at the same time , now prevented using a seperate function that triggers when the page is loaded itself
+function welcomeMessage(){
+  textToSpeechModule("Hi there , how may i help you today?")
+}
+welcomeMessage()
