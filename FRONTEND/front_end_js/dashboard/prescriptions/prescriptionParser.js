@@ -1,5 +1,5 @@
 // importing the Tesseract from the Tesseract CDN , Tesseract is a js lib that helps us to convert a img ka content into plain text so we can use that later
-// here we are using Tesseract to make thing simple so we can extract the test from a handwritten prescription 
+// here we are using Tesseract to make thing simple so we can extract the meds from a handwritten prescription 
 import Tesseract from "https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.esm.min.js";
 
 // const inputFile = "/EC-Agentic-AI/FRONTEND/front_end_js/dashboard/prescriptions/test_input2.png" //test subject

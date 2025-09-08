@@ -1,4 +1,4 @@
-function textToSpeechModule(text) {
+function medicationReminder(text) {
 
   try {
 
@@ -22,4 +22,4 @@ function textToSpeechModule(text) {
 }
 
 
-textToSpeechModule("YOU HAVE AN UPCOMING MEDICATION AT 1:30PM MEDICINE IS ATORTIB.")
+medicationReminder("YOU HAVE AN UPCOMING MEDICATION AT 1:30PM MEDICINE IS ATORTIB.")
