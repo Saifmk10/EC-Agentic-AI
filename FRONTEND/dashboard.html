@@ -63,8 +63,11 @@
             </div>
         </div>
 
+
+
+
         <!-- Medicines Stock -->
-        <div class="bg-gray-200 rounded-lg p-4 flex flex-col h-[400px] overflow-y-scroll">
+        <div class="bg-gray-200 rounded-lg p-4 flex flex-col h-[440px] overflow-y-scroll">
 
             <div class="flex justify-between items-center mb-4 ">
                 <h2 class="bg-[#000000] text-[#ffffff]  px-4 py-1 rounded-lg">MEDICINES STOCK</h2>
@@ -87,7 +90,7 @@
 
 
         <!-- Appointments -->
-        <div class="bg-gray-200 rounded-lg p-4 flex flex-col h-[400px] overflow-y-scroll ">
+        <div class="bg-gray-200 rounded-lg p-4 flex flex-col h-[440px] overflow-y-scroll ">
             <div class="flex justify-between items-center mb-4">
                 <h2 class="bg-[#000000] text-[#ffffff]  px-4 py-1 rounded-lg">APPOINTMENTS </h2>
             </div>
@@ -126,6 +129,11 @@
         </div> -->
 
         <!-- the loading animation will be added over here on the top -->
+         <div id="loader" class="flex hidden justify-center items-center z-50">
+         <div class="animate-spin rounded-full h-[25px] w-[25px]  border-t-3 border-b-3 border-black"></div>
+            <p class="p-[10px]">Processing prescription...</p>
+        </div>
+
 
 
         <!-- Bottom Center Logo -->
@@ -150,6 +158,7 @@
 
     const fileInput = document.getElementById("imageUpload");
     const addBtn = document.getElementById("addPrescriptionBtn");
+    const loader = document.getElementById("loader");
 
     addBtn.onclick = () => fileInput.click();
 
@@ -158,12 +167,20 @@
         if (!file) return;
 
         try {
+            loader.classList.remove("hidden");
+
             await pushingPrescriptionDataToDB(file);
             alert("Prescription uploaded successfully!");
             console.log("Prescription uploaded successfully!");
-        } catch (error) {
+
+            
+        } 
+        catch (error) {
             console.error("Error uploading prescription:", error);
             alert("Failed to upload prescription. Check console for details.");
+        }
+        finally{
+            loader.classList.add("hidden");
         }
     };
 </script>

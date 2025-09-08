@@ -27,7 +27,9 @@ async function fetchingMedicineDetails() {
     const snapshot = await getDocs(medicineDBCollection);
     const medicineDetails = snapshot.docs.map(doc => doc.data());
 
-    console.log("MEDICINE COUNT : ", medicineDetails.length);
+    console.log("MEDICINE COUNT : ", medicineDetails.length); // debug purpose
+
+    const medicineCount = [9 , 1 , 2 , 7 , 5] 
 
     medicineDetails.forEach((prescription) => {
         prescription.medicine.forEach((med, index) => {
@@ -37,12 +39,21 @@ async function fetchingMedicineDetails() {
 
             // update medicine name 
             newCard.querySelector(".medicine_name").textContent = med;
-            newCard.querySelector(".medicine_count").textContent = `${index + 10}/${prescription.medicine.length}`;
+
+
+            // adding the medicine stock number and the medicine percentage for the progress bar 
+            const medicineCountForPercentage = getRandomElement(medicineCount)
+            newCard.querySelector(".medicine_count").textContent = `${medicineCountForPercentage}/${10}`;
+            newCard.querySelector(".medicine_bar").style.width = medicineCountForPercentage / 10 * 100 + "%";
 
             // adding the clone into the main parent continer
             cardsContainer.appendChild(newCard);
         });
     });
+}
+
+function getRandomElement(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
 }
 
 fetchingMedicineDetails();
