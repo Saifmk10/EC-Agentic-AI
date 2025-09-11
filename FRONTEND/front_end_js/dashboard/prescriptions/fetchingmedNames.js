@@ -97,9 +97,16 @@ async function fetchingMedicineDetails() {
   medTiming.textContent = finalTime;
 
   // medication reminder , voice and console
-  medicationReminder(`YOU HAVE AN UPCOMING MEDICATION AT ${finalTime} ,  MEDICINE is ${randomMedForReminder} and DOSAGE is ${randomDosageForReminder} ML.`)
+  if(!randomMedForReminder){
+    return
+  }
+  else{
+    medicationReminder(`YOU HAVE AN UPCOMING MEDICATION AT ${finalTime} ,  MEDICINE is ${randomMedForReminder} and DOSAGE is ${randomDosageForReminder} ML.`)
   console.log('THIS IS THE OUPUT FROM RANDOM MED IN fetchingNames.js file : ', randomMedForReminder);
 
+  }
+
+  
 }
 
 function getRandomElement(arr) {
