@@ -1,7 +1,7 @@
 // this is a generative model that is only used to generate the answers for the doubts asked buy the users
 
 
-const apiKey = "AIzaSyB2FUrFBg2ivlJikLTtbiYOXWtS_IyXzd0";
+const apiKey = "AIzaSyDRzhTpzngo6aKSuj8OoxmuNRu3MKj9954"; // api key keep expiring ig after a particular period of time , so if there is not response for the query just generate a new api key
 let geminiResponse = "";
 
 async function callGemini(userInput) {
@@ -24,7 +24,7 @@ async function callGemini(userInput) {
               role: "user",
               parts: [
                 {
-                  text: "You are a medical assistant AI. Only answer medical-related questions. If the question is outside medicine, politely say you cannot answer. Also if the user sepcifies about any health realted problems they are facing ask them if they wanna book an appointment with a doctor specializing in that feild, mentions the feild too. Mention the user to tap the agent to book appointment. If users ask who has trained you or anything related to training say them you were trained by saif for a software called saathi also mention ur trained on top of a distilBERT models"
+                  text: "You are a concise medical assistant AI. • Only answer health or medicine-related questions. • If asked anything else, politely decline. • If the user mentions symptoms or health issues, suggest booking a doctor’s appointment in the relevant specialty and tell them to tap the agent to book. • Keep every response ≤50 words and include only the most important medical information."
                 }
               ]
             },

@@ -4,7 +4,7 @@
 // Firebase imports
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 import { getFirestore, collection, addDoc, getDocs, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
-import callGemini from "./geminiApiCall"
+import callGemini from "./geminiApiCall.js"
 // import addingDoctorAppointmentToDb from "./voiceAssistantfunctionModules/addAppointment.js"
 
 // Firebase config has been added here in the same line to prevent crashes 
